@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './NavBar.css';
 import './HomeButton.css';
 
-export default function NavigationBar() {
+export default function NavBar() {
   const navigatioBarRef = useRef();
 
   const scrollDownToNav = () =>
@@ -13,24 +13,24 @@ export default function NavigationBar() {
   return (
     <div>
       <div className='welcome-button'>
-        <button onClick={scrollDownToNav}>START</button>
+        {/* <button onClick={scrollDownToNav}>START</button> */}
       </div>
       <div>
         <nav>
           <ul ref={navigatioBarRef} className='navigation'>
             <li>
-              <a href='#about' className='link'>
-                About
+              <a onClick={scrollDownToNav} href='#about' className='link'>
+                Who we are
               </a>
             </li>
             <li>
-              <a href='#about' className='link'>
-                Projects
+              <a onClick={scrollDownToNav} href='#about' className='link'>
+                What we do
               </a>
             </li>
             <li>
-              <a href='#contact' className='link'>
-                Contact
+              <a onClick={scrollDownToNav} href='#contact' className='link'>
+                Why we do it
               </a>
             </li>
           </ul>
