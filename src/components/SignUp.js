@@ -22,7 +22,7 @@ const useTextFieldStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [secretCode, setSecretCode] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -68,6 +68,7 @@ const SignUp = () => {
         axios
           .post('http://192.168.68.111:5000/signup', datas)
           .then((res) => console.log(res))
+          .then(props.history.push('/'))
           .catch((err) =>
             err == 'Error: Request failed with status code 403'
               ? setIsSecretcodeUnvalid(true)
