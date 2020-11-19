@@ -36,6 +36,7 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState('');
   const [cityError, setCityError] = useState('');
   const [isProducer, setIsProductor] = useState(false);
+  const [isSecretCodeUnvalid, setIsSecretcodeUnvalid] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,9 +67,14 @@ const SignUp = () => {
 
         axios
           .post('http://192.168.68.111:5000/signup', datas)
-          .then((res) => console.log(res));
+          .then((res) => console.log(res))
+          .catch((err) =>
+            err == 'Error: Request failed with status code 403'
+              ? setIsSecretcodeUnvalid(true)
+              : setIsSecretcodeUnvalid(false)
+          );
       }
-    } else console.log('bad password');
+    } else alert('Passwords are different');
   };
 
   const validation = () => {
@@ -85,10 +91,10 @@ const SignUp = () => {
       setConfirmedPasswordError('Please, enter a password');
     }
     if (!email) {
-      setEmail('Please, enter a password');
+      setEmailError('Please, enter an email');
     }
     if (!city) {
-      setCity('Please, enter a password');
+      setCityError('Please, enter a city');
     }
     if (
       secretCode &&
@@ -106,6 +112,8 @@ const SignUp = () => {
   return (
     <div className='signup-wrapper'>
       <h1>Sign up</h1>
+      {isSecretCodeUnvalid && <p>Wrong secret code</p>}
+      <p>All fields are required</p>
       <form className={useTextFieldStyles().root} noValidate autoComplete='off'>
         <div className='secret-code'>
           <TextField
@@ -114,7 +122,6 @@ const SignUp = () => {
             type='text'
             label='Secret Code'
             placeholder='Enter the secret code'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setSecretCode(event.target.value)}
           />
@@ -181,7 +188,7 @@ const SignUp = () => {
 
         <FormControl component='fieldset'>
           <FormLabel component='legend'>I'm a</FormLabel>
-          <RadioGroup aria-label='gender' name='gender1'>
+          <RadioGroup aria-label='isProducer' name='isProducer'>
             <FormControlLabel
               value='producer'
               control={<Radio />}

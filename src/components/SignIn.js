@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/Login.scss';
 
 const useTextFieldStyles = makeStyles((theme) => ({
@@ -26,17 +27,20 @@ const SignIn = () => {
     event.preventDefault();
     const isValid = validation();
     if (isValid) {
-      let json = [
-        {
-          user: username,
-          password: password,
-        },
-      ];
-      console.log(json);
+      let datas = {
+        username,
+        password,
+      };
+
       setUsername('');
       setPassword('');
       setUsernameError('');
       setPasswordError('');
+
+      axios
+        .post('http://192.168.68.111:5000/login', datas)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err));
     }
   };
 
@@ -65,10 +69,8 @@ const SignIn = () => {
         <div className='username'>
           <TextField
             error={usernameError ? true : false}
-            // id='outlined-error-helper-text'
             label='Username'
             placeholder={usernameError}
-            // helperText='Incorrect entry.'
             variant='outlined'
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -79,10 +81,8 @@ const SignIn = () => {
           <TextField
             error={passwordError ? true : false}
             type='password'
-            // id='outlined-error-helper-text'
             label='Password'
             placeholder={passwordError}
-            // helperText='Incorrect entry.'
             variant='outlined'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -96,7 +96,7 @@ const SignIn = () => {
         </div>
       </form>
 
-      <p>New to Vote-Dry ?</p>
+      <p>New to Vote Dry ?</p>
       <Link to={`/signup`}>
         <Button variant='contained'>Create your account</Button>
       </Link>
