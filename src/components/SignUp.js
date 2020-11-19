@@ -9,7 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import '../styles/Login.scss';
-import axios from 'axios'
+import axios from 'axios';
 
 const useTextFieldStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +42,7 @@ const SignUp = () => {
     const isValid = validation();
     if (password === confirmPassword) {
       if (isValid) {
-        let json = {
+        let datas = {
           secretCode,
           username,
           password,
@@ -63,10 +63,9 @@ const SignUp = () => {
         setConfirmedPasswordError('');
         setEmailError('');
         setCityError('');
-      }
-      axios
-      .get
 
+        axios.post('/signup', datas).then((res) => console.log(res));
+      }
     } else console.log('bad password');
   };
 
