@@ -35,7 +35,7 @@ const SignUp = () => {
   const [confirmedPasswordError, setConfirmedPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [cityError, setCityError] = useState('');
-  const [isProductor, setIsProductor] = useState(false);
+  const [isProducer, setIsProductor] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,13 +43,13 @@ const SignUp = () => {
     if (password === confirmPassword) {
       if (isValid) {
         let datas = {
-          secretCode,
+          checkSecretCode: secretCode,
           username,
           password,
           confirmPassword,
           email,
           city,
-          isProductor,
+          isProducer,
         };
         setSecretCode('');
         setUsername('');
@@ -64,7 +64,9 @@ const SignUp = () => {
         setEmailError('');
         setCityError('');
 
-        axios.post('/signup', datas).then((res) => console.log(res));
+        axios
+          .post('http://192.168.68.111:5000/signup', datas)
+          .then((res) => console.log(res));
       }
     } else console.log('bad password');
   };
