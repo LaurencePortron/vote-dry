@@ -42,9 +42,13 @@ app.post('/signup', (req, res) => {
     res.status(403).send({
       message: 'Password and confirm password do not match',
     });
-  } else if (!username || !email) {
+  } else if (!username) {
     res.status(403).send({
-      message: 'Please provide a valid username or email',
+      message: 'Please provide a valid username',
+    });
+  } else if (!email) {
+    res.status(403).send({
+      message: 'Please provide a valid email',
     });
   } else if (!city) {
     res.status(403).send({
@@ -61,16 +65,6 @@ app.post('/signup', (req, res) => {
     });
   }
 });
-
-/*
-
--Si tout est bon ok
--Si code pas bon mais user bon => message
--Si code bon mais user pas bon => message
-
-
-
-*/
 
 app.listen(PORT, (err) => {
   if (err) console.error(err);
