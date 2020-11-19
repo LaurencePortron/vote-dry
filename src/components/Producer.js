@@ -42,7 +42,10 @@ const Producer = (props) => {
           date: '12/31/1925',
         },
       ],
-      litiges: [{ buyer: 'Matthieu Martinot', status: 'unpaid' }],
+      litiges: [
+        { buyer: 'Matthieu Martinot', status: 'unpaid' },
+        { buyer: 'Yoan Vincent', status: 'moneyless, he is a php worker...' },
+      ],
       feedbacks: [
         {
           username: 'Anonymous',
@@ -67,6 +70,7 @@ const Producer = (props) => {
     <div className='producer-container'>
       <h1>Welcome Back {users[0].username}</h1>
       <div className='producer-infos'>
+        <h2>Your Pending Orders</h2>
         {
           <div className='producer-orders'>
             {users[0].orders.map((e, i) => {
@@ -81,9 +85,35 @@ const Producer = (props) => {
             })}
           </div>
         }
-        <div className='container-reviews'>
-          <div className='disputes'></div>
-          <div className='feedback'></div>
+      </div>
+      <div className='container-reviews'>
+        <div className='dispute-container'>
+          <h2>Disputes</h2>
+          <div className='main-disputes'>
+            <div className='disputes'>
+              {users[0].litiges[0].buyer}
+              <br />
+              {users[0].litiges[0].status}
+            </div>
+            <div className='disputes'>
+              {users[0].litiges[1].buyer}
+              <br />
+              {users[0].litiges[1].status}
+            </div>
+          </div>
+        </div>
+
+        <div className='feedback'>
+          <h2>Reviews</h2>
+          {users[0].feedbacks.map((elem, i) => {
+            return (
+              <div key={i} className='cards-reviews'>
+                <li>{elem.username} user</li>
+                <li>Rating: {elem.rating}</li>
+                <li>Reviews: {elem.message}</li>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

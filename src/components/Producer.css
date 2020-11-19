@@ -6,12 +6,14 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border: solid;
+}
+.producer-container h2 {
+  text-align: center;
 }
 .producer-infos {
-  border: solid;
   width: 80%;
   margin: 50px;
+  text-align: center;
 }
 .producer-orders {
   display: flex;
@@ -20,11 +22,44 @@
 .infos-cards {
   list-style-type: none;
   padding: 10px;
-  background-color: #58d68d;
+  background-color: #637a90;
   margin: 20px;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
 }
 .infos-cards li {
   padding: 10px;
+}
+.container-reviews {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.disputes {
+  height: 200px;
+  background-color: #637a90;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.cards-reviews {
+  list-style-type: none;
+  padding: 10px;
+  background-color: #637a90;
+  margin: 20px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+.disputes-container {
+  display: flex;
+}
+.main-disputes {
+  display: flex;
 }
