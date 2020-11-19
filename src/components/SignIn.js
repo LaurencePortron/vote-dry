@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Login } from '../contexts/LoginContext';
 import axios from 'axios';
 import '../styles/Login.scss';
 
@@ -17,11 +18,13 @@ const useTextFieldStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  const { setCurrentLogin } = useContext(Login);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -39,7 +42,12 @@ const SignIn = () => {
 
       axios
         .post('http://192.168.68.111:5000/login', datas)
-        .then((res) => console.log(res.data))
+        .then((res) => setCurrentLogin(res.data))
+        .then((res) =>
+          res.data.isProducer
+            ? props.history.push('/signup')
+            : props.history.push('/signup')
+        )
         .catch((err) => console.log(err));
     }
   };
