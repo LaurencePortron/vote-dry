@@ -1,4 +1,5 @@
 const express = require('express');
+const { v4: uuidv4 } = require('uuid');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -7,10 +8,12 @@ app.use(express.json());
 
 let users = [
   {
+    id: 0,
     username: 'test',
     email: 'test@test.com',
     password: '12345',
     city: 'Chicago',
+    isProductor: false,
   },
 ];
 
@@ -24,6 +27,7 @@ app.post('/signup', (req, res) => {
     confirmPassword,
     checkSecretCode,
     city,
+    isProductor,
   } = req.body;
 
   let checkUsers = users.filter(
@@ -55,7 +59,7 @@ app.post('/signup', (req, res) => {
       message: 'Please provide a city',
     });
   } else {
-    users.push({ username, email, password, city });
+    users.push({ id: uuidv4(), username, email, password, city, isProductor });
     console.log(users);
 
     res.json({
