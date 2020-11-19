@@ -74,7 +74,12 @@ const SignUp = () => {
               : setIsSecretcodeUnvalid(false)
           );
       }
-    } else alert('Passwords are different');
+    } else {
+      setPasswordError('Passwords are not same');
+      setConfirmedPasswordError('Passwords are not same');
+      setPassword('');
+      setConfirmedPassword('');
+    }
   };
 
   const validation = () => {
@@ -132,7 +137,6 @@ const SignUp = () => {
             error={usernameError ? true : false}
             label='Username'
             placeholder='Enter your username'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -144,7 +148,6 @@ const SignUp = () => {
             type='password'
             label='Password'
             placeholder='Enter your password'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setPassword(event.target.value)}
           />
@@ -156,7 +159,6 @@ const SignUp = () => {
             type='password'
             label='Confirm your password'
             placeholder='Confirm your password'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setConfirmedPassword(event.target.value)}
           />
@@ -168,7 +170,6 @@ const SignUp = () => {
             type='email'
             label='Email'
             placeholder='Enter your email'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setEmail(event.target.value)}
           />
@@ -180,7 +181,6 @@ const SignUp = () => {
             type='text'
             label='City'
             placeholder='Enter your city'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setCity(event.target.value)}
           />
