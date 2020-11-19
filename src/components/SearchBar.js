@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-// import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { ProducerContext } from '../context/ProducerContext';
@@ -15,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
     width: '70%',
   },
 }));
+
+const SearchBarLink = () => {
+  return (
+    <Link to={`/`}>
+      <SearchIcon style={{ color: 'black' }} />
+    </Link>
+  );
+};
 
 const SearchBar = () => {
   const classes = useStyles();
@@ -46,7 +55,7 @@ const SearchBar = () => {
               ...params.InputProps,
               type: 'search',
               className: classes.input,
-              //   endAdornment: <SearchBarLink />,
+              endAdornment: <SearchBarLink />,
             }}
           />
         )}
