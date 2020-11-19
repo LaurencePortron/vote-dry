@@ -35,7 +35,8 @@ const SignUp = () => {
   const [confirmedPasswordError, setConfirmedPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [cityError, setCityError] = useState('');
-  const [isProductor, setIsProductor] = useState(false);
+  const [isProducer, setIsProductor] = useState(false);
+  const [isSecretCodeUnvalid, setIsSecretcodeUnvalid] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,13 +44,13 @@ const SignUp = () => {
     if (password === confirmPassword) {
       if (isValid) {
         let datas = {
-          secretCode,
+          checkSecretCode: secretCode,
           username,
           password,
           confirmPassword,
           email,
           city,
-          isProductor,
+          isProducer,
         };
         setSecretCode('');
         setUsername('');
@@ -64,9 +65,21 @@ const SignUp = () => {
         setEmailError('');
         setCityError('');
 
-        axios.post('/signup', datas).then((res) => console.log(res));
+        axios
+          .post('http://192.168.68.111:5000/signup', datas)
+          .then((res) => console.log(res))
+          .catch((err) =>
+            err == 'Error: Request failed with status code 403'
+              ? setIsSecretcodeUnvalid(true)
+              : setIsSecretcodeUnvalid(false)
+          );
       }
-    } else console.log('bad password');
+    } else {
+      setPasswordError('Passwords are not same');
+      setConfirmedPasswordError('Passwords are not same');
+      setPassword('');
+      setConfirmedPassword('');
+    }
   };
 
   const validation = () => {
@@ -83,10 +96,10 @@ const SignUp = () => {
       setConfirmedPasswordError('Please, enter a password');
     }
     if (!email) {
-      setEmail('Please, enter a password');
+      setEmailError('Please, enter an email');
     }
     if (!city) {
-      setCity('Please, enter a password');
+      setCityError('Please, enter a city');
     }
     if (
       secretCode &&
@@ -104,6 +117,8 @@ const SignUp = () => {
   return (
     <div className='signup-wrapper'>
       <h1>Sign up</h1>
+      {isSecretCodeUnvalid && <p>Wrong secret code</p>}
+      <p>All fields are required</p>
       <form className={useTextFieldStyles().root} noValidate autoComplete='off'>
         <div className='secret-code'>
           <TextField
@@ -112,7 +127,6 @@ const SignUp = () => {
             type='text'
             label='Secret Code'
             placeholder='Enter the secret code'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setSecretCode(event.target.value)}
           />
@@ -123,7 +137,6 @@ const SignUp = () => {
             error={usernameError ? true : false}
             label='Username'
             placeholder='Enter your username'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -135,7 +148,6 @@ const SignUp = () => {
             type='password'
             label='Password'
             placeholder='Enter your password'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setPassword(event.target.value)}
           />
@@ -147,7 +159,6 @@ const SignUp = () => {
             type='password'
             label='Confirm your password'
             placeholder='Confirm your password'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setConfirmedPassword(event.target.value)}
           />
@@ -159,7 +170,6 @@ const SignUp = () => {
             type='email'
             label='Email'
             placeholder='Enter your email'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setEmail(event.target.value)}
           />
@@ -171,7 +181,6 @@ const SignUp = () => {
             type='text'
             label='City'
             placeholder='Enter your city'
-            // helperText='Incorrect entry.'
             variant='outlined'
             onChange={(event) => setCity(event.target.value)}
           />
@@ -179,7 +188,7 @@ const SignUp = () => {
 
         <FormControl component='fieldset'>
           <FormLabel component='legend'>I'm a</FormLabel>
-          <RadioGroup aria-label='gender' name='gender1'>
+          <RadioGroup aria-label='isProducer' name='isProducer'>
             <FormControlLabel
               value='producer'
               control={<Radio />}
