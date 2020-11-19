@@ -1,4 +1,4 @@
-.GameCard {
+.producer-card {
   display: flex;
 
   padding: 1.25em;
@@ -9,30 +9,17 @@
   font-size: 1.2em;
 }
 
-.GameCard figcaption {
+.producer-card figcaption {
   width: 100%;
 }
 
-.GameCard img {
-  display: flex;
-  max-height: 120px;
-  margin-right: 1.5rem;
-}
-
-.GameCard blockquote {
+.producer-card blockquote {
   margin: 0 0 1rem 0;
 }
 
-.GameCard figcaption p {
+.producer-card figcaption p {
   margin: 0.125rem 0 0 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-}
-
-.moredetails-button {
-  padding: 10px;
-  margin-left: 20px;
-  background-color: transparent;
-  border: 1px solid black;
 }

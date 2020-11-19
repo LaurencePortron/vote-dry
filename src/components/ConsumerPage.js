@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ConsumerPage.css';
+import Producer from './Producer';
+import Filter from './Filter';
 
 export default function ConsumerPage(props) {
   const [producers, setProducers] = useState([]);
 
   useEffect(() => {
-    axios.get(``).then((response) => {
+    axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
       setProducers(response.data);
       console.log(response.data);
     });
@@ -14,15 +16,14 @@ export default function ConsumerPage(props) {
 
   return (
     <div>
-      <figure className='producers-cards'>
-        {/* <img src={} alt={} /> */}
-        <figcaption>
-          <blockquote>{}</blockquote>
-          <p>
-            <cite>{}</cite>
-          </p>
-        </figcaption>
-      </figure>
+      <div>
+        <Filter />
+      </div>
+      {producers.map((producer) => (
+        <div>
+          <Producer key={producer.id} producer={producer} />
+        </div>
+      ))}
     </div>
   );
 }

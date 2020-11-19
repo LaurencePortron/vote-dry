@@ -4,6 +4,7 @@ import './components/NavBar.css';
 import Footer from './components/Footer';
 import './components/Footer.css';
 import VoteDry from './components/VoteDry';
+import ConsumerPage from './components/ConsumerPage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavBar />
       <VoteDry />
       <Footer />
+      <ConsumerPage />
     </div>
   );
 }
