@@ -43,7 +43,7 @@ const SignIn = (props) => {
       axios
         .post('http://192.168.68.111:5000/login', datas)
         .then((res) => setCurrentLogin(res.data))
-        .then(
+        .then(() =>
           currentLogin.isProducer
             ? props.history.push('/producer')
             : props.history.push('/consumer')
