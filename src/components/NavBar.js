@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import './NavBar.css';
-import './HomeButton.css';
 
 export default function NavBar() {
   const navigatioBarRef = useRef();
