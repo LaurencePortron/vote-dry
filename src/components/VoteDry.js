@@ -7,6 +7,7 @@ import voteDry2 from '../images/voteDry2.jpg';
 import voteDry3 from '../images/voteDry3.jpg';
 /* import voteDry4 from '../images/voteDry4.jpg'; */
 import voteDry5 from '../images/voteDry5.jpg';
+import { Link } from 'react-router-dom';
 
 const VoteDry = () => {
   const whoRef = useRef();
@@ -65,9 +66,13 @@ const VoteDry = () => {
             family.
           </p>{' '}
           <p>
-            Our pastor <strong>Pierre Genthon</strong> arrived from his previous
-            service in Lyon -France last summer. He officiates at most Sunday
-            services and is also in charge of children’s Sunday school.
+            Our pastor{' '}
+            <strong>
+              <Link to='signin'>Pierre </Link>Genthon
+            </strong>{' '}
+            arrived from his previous service in Lyon -France last summer. He
+            officiates at most Sunday services and is also in charge of
+            children’s Sunday school.
           </p>
         </div>
 

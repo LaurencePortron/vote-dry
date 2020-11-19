@@ -26,6 +26,11 @@
   margin: 0 40px 50px;
   padding: 10px;
   text-align: justify;
+  a {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+  }
 }
 
 .whatWeDo {
