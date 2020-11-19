@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
 import './ConsumerPage.css';
 import Producer from './Producer';
 import Filter from './Filter';
+import SearchBar from './SearchBar';
+import { ProducerContext } from '../context/ProducerContext';
 
 export default function ConsumerPage(props) {
-  const [producers, setProducers] = useState([]);
+  const { getProducerList, producers } = useContext(ProducerContext);
 
   useEffect(() => {
-    axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
-      setProducers(response.data);
-      console.log(response.data);
-    });
+    getProducerList();
   }, []);
 
   return (
     <div>
+      <SearchBar />
       <div>
         <Filter />
       </div>
