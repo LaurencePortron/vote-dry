@@ -4,6 +4,7 @@ import Producer from './Producer';
 import Filter from './Filter';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
+import NavBarConsumer from './NavBarConsumer';
 
 export default function ConsumerPage(props) {
   const { getProducerList, producers } = useContext(ProducerContext);
@@ -14,6 +15,7 @@ export default function ConsumerPage(props) {
 
   return (
     <div>
+      <NavBarConsumer />
       <SearchBar />
       <div>
         <Filter />
