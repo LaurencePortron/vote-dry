@@ -1,7 +1,8 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
-
 const PORT = process.env.PORT || 5000;
+const productorsList = require('./data/productors');
+
 const app = express();
 
 app.use(express.json());
@@ -68,6 +69,10 @@ app.post('/signup', (req, res) => {
       city,
     });
   }
+});
+
+app.get('/productorsList', (req, res) => {
+  res.status(200).json(productorsList);
 });
 
 app.listen(PORT, (err) => {
