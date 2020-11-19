@@ -1,0 +1,15 @@
+.footer {
+  background-color: #03245c;
+  position: fixed;
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+.footer-quote {
+  text-decoration: none;
+  list-style: none;
+  font-family: 'IBM Plex Serif', serif;
+}

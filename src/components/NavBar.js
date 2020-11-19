@@ -4,31 +4,42 @@ import './NavBar.css';
 export default function NavBar() {
   const navigatioBarRef = useRef();
 
-  const scrollDownToNav = () =>
+  const scrollDownToNavWho = () =>
+    navigatioBarRef.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  const scrollDownToNavWhat = () =>
+    navigatioBarRef.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  const scrollDownToNavWhy = () =>
     navigatioBarRef.current.scrollIntoView({
       behavior: 'smooth',
     });
 
   return (
     <div>
-      <div className='welcome-button'>
-        {/* <button onClick={scrollDownToNav}>START</button> */}
-      </div>
       <div>
-        <nav>
+        <nav className='navigationBar'>
           <ul ref={navigatioBarRef} className='navigation'>
+            {/* <img
+              className='logo'
+              src='https://www.pinclipart.com/picdir/middle/30-306799_clip-royalty-free-download-transparent-images-pluspng-church.png'
+              alt='churchlogo'
+            /> */}
+
             <li>
-              <a onClick={scrollDownToNav} href='#about' className='link'>
+              <a onClick={scrollDownToNavWho} href='#about' className='link'>
                 Who we are
               </a>
             </li>
             <li>
-              <a onClick={scrollDownToNav} href='#about' className='link'>
+              <a onClick={scrollDownToNavWhat} href='#about' className='link'>
                 What we do
               </a>
             </li>
             <li>
-              <a onClick={scrollDownToNav} href='#contact' className='link'>
+              <a onClick={scrollDownToNavWhy} href='#contact' className='link'>
                 Why we do it
               </a>
             </li>
