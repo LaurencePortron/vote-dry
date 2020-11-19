@@ -1,19 +1,26 @@
+import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
-import './components/NavBar.css';
-import Footer from './components/Footer';
-import './components/Footer.css';
 import VoteDry from './components/VoteDry';
-import ConsumerPage from './components/ConsumerPage';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Footer from './components/Footer';
+import LoginContextProvider from './contexts/LoginContext';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='App'>
-      <NavBar />
-      <VoteDry />
-      <Footer />
-      <ConsumerPage />
-    </div>
+    <LoginContextProvider>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={VoteDry}>
+            {/* {currentLogin ? <Redirect to='/dashboard' /> : null} */}
+          </Route>
+          <Route path='/signin' component={SignIn} />
+          <Route exact path='/signup' component={SignUp} />
+        </Switch>
+        <Footer />
+      </Router>
+    </LoginContextProvider>
   );
 }
 
