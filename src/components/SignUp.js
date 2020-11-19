@@ -67,13 +67,12 @@ const SignUp = (props) => {
 
         axios
           .post('http://192.168.68.111:5000/signup', datas)
-          .then((res) => console.log(res))
-          .then(props.history.push('/'))
-          .catch((err) =>
+          .then(() => props.history.push('/'))
+          .catch((err) => {
             err == 'Error: Request failed with status code 403'
               ? setIsSecretcodeUnvalid(true)
-              : setIsSecretcodeUnvalid(false)
-          );
+              : setIsSecretcodeUnvalid(false);
+          });
       }
     } else {
       setPasswordError('Passwords are not same');
