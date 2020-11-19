@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Login } from '../contexts/LoginContext';
+import axios from 'axios';
 import '../styles/Login.scss';
 
 const useTextFieldStyles = makeStyles((theme) => ({
@@ -16,27 +18,37 @@ const useTextFieldStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  const { currentLogin, setCurrentLogin } = useContext(Login);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const isValid = validation();
     if (isValid) {
-      let json = [
-        {
-          user: username,
-          password: password,
-        },
-      ];
-      console.log(json);
+      let datas = {
+        username,
+        password,
+      };
+
       setUsername('');
       setPassword('');
       setUsernameError('');
       setPasswordError('');
+
+      axios
+        .post('http://192.168.68.111:5000/login', datas)
+        .then((res) => setCurrentLogin(res.data))
+        .then(
+          currentLogin.isProducer
+            ? props.history.push('/producer')
+            : props.history.push('/consumer')
+        )
+        .catch((err) => console.log(err));
     }
   };
 
@@ -65,10 +77,8 @@ const SignIn = () => {
         <div className='username'>
           <TextField
             error={usernameError ? true : false}
-            // id='outlined-error-helper-text'
             label='Username'
             placeholder={usernameError}
-            // helperText='Incorrect entry.'
             variant='outlined'
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -79,10 +89,8 @@ const SignIn = () => {
           <TextField
             error={passwordError ? true : false}
             type='password'
-            // id='outlined-error-helper-text'
             label='Password'
             placeholder={passwordError}
-            // helperText='Incorrect entry.'
             variant='outlined'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -96,7 +104,7 @@ const SignIn = () => {
         </div>
       </form>
 
-      <p>New to Vote-Dry ?</p>
+      <p>New to Vote Dry ?</p>
       <Link to={`/signup`}>
         <Button variant='contained'>Create your account</Button>
       </Link>
