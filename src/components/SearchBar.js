@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { ProducerContext } from '../context/ProducerContext';
+import _ from 'lodash';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -21,6 +22,12 @@ const SearchBar = () => {
     ProducerContext
   );
 
+  let alcoholArray = producers.map((producer) => {
+    return producer.alcohol;
+  });
+
+  let uniqueAlcohol = _.uniqBy(alcoholArray);
+
   return (
     <div>
       <Autocomplete
@@ -30,7 +37,7 @@ const SearchBar = () => {
         className={classes.root}
         onChange={(event, value) => setSelectedAlcohol(value)}
         onInputChange={(event, inputValue) => setInputValue(inputValue)}
-        options={producers.map((producer) => producer.alcohol)}
+        options={uniqueAlcohol}
         renderInput={(params) => (
           <TextField
             {...params}
