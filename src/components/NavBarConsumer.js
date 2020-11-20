@@ -37,13 +37,14 @@ const NavBarConsumer = () => {
                 color: 'white',
                 textDecoration: 'none',
                 fontSize: '26px',
+                fontFamily: 'IBM Plex Serif, serif',
               }}
             >
               Booze Market
             </Typography>
             <Button>
               <Typography
-                style={{ color: 'white' }}
+                style={{ color: 'white', fontFamily: 'IBM Plex Serif, serif' }}
               >{`Logged as ${currentLogin.username}`}</Typography>
             </Button>
 

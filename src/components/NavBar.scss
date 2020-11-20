@@ -1,4 +1,5 @@
 .navigation {
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,5 +67,14 @@ a:hover::before {
 @media screen and (min-width: 1024px) {
   .link {
     margin: 0 20px 0;
+  }
+}
+@media screen and (min-width: 600px) {
+  .navigation {
+    justify-content: flex-end;
+  }
+
+  .link {
+    font-size: 20px;
   }
 }

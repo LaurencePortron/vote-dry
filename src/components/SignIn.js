@@ -95,6 +95,9 @@ const SignIn = (props) => {
               InputLabelProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
+              InputProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='password'>
@@ -107,6 +110,9 @@ const SignIn = (props) => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+              InputProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
             />

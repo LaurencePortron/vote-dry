@@ -1,0 +1,10 @@
+.feedbacks-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.add-feedbacks {
+  display: flex;
+  flex-direction: column;
+}

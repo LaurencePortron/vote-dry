@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
 import Footer from '../components/Footer';
@@ -8,11 +9,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../styles/ProducerDetail.scss';
 import NavBarConsumer from './NavBarConsumer';
+import FeedBacks from './FeedBacks';
 
 const ProducerDetail = (props) => {
   const [producerDetail, setProducerDetail] = useState([]);
   const [quantity, setQuantity] = useState(0);
   const producerId = props.match.params.producer;
+
+  const history = useHistory();
 
   useEffect(() => {
     axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
@@ -39,6 +43,12 @@ const ProducerDetail = (props) => {
     producerDetail.length !== 0 && (
       <>
         <NavBarConsumer />
+        <div
+          onClick={() => history.goBack()}
+          style={{ cursor: 'pointer', marginTop: '20px', marginLeft: '30px' }}
+        >
+          Go back
+        </div>
         <div className='producer-detail-container'>
           <section className='producer-detail'>
             <h1>
@@ -58,24 +68,26 @@ const ProducerDetail = (props) => {
               {producerDetail[0].alcohol}
             </h3>
             <div className='rating'></div>
-            <div>{producerDetail[0].price}$ per unit </div>
+            <p>{producerDetail[0].price}$ per unit </p>
 
             <div className='input'>
               <TextField
                 id='standard-number'
-                label='Number'
+                label='Quantity'
                 type='number'
                 value={quantity}
                 InputProps={{
                   inputProps: { min: 0, max: producerDetail[0].stock },
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
                 }}
                 InputLabelProps={{
                   shrink: true,
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
                 }}
                 onChange={(event) => setQuantity(event.target.value)}
               />
             </div>
-            <div>Total : {quantity * producerDetail[0].price}$</div>
+            <p>Total : {quantity * producerDetail[0].price}$</p>
             <div className='button'>
               {quantity === 0 ? (
                 <Button
@@ -87,11 +99,17 @@ const ProducerDetail = (props) => {
                   Send my order
                 </Button>
               ) : (
-                <Button variant='contained' type='button' onClick={handleClick}>
+                <Button
+                  variant='contained'
+                  type='button'
+                  onClick={handleClick}
+                  style={{ fontFamily: 'IBM Plex Serif, serif' }}
+                >
                   Send my order
                 </Button>
               )}
             </div>
+            <FeedBacks producerDetail={producerDetail} />
           </section>
           <footer>
             <Footer />

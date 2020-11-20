@@ -78,7 +78,7 @@ const SignUp = (props) => {
 
         axios
           .post('http://192.168.68.111:5000/signup', datas)
-          .then(() => props.history.push('/'))
+          .then(() => props.history.push('/signin'))
           .catch((err) => {
             err == 'Error: Request failed with status code 403'
               ? setIsSecretcodeUnvalid(true)
@@ -139,12 +139,15 @@ const SignUp = (props) => {
             <TextField
               value={secretCode}
               error={secretCodeError ? true : false}
-              type='text'
+              type='password'
               label='Secret Code'
               placeholder='Enter the secret code'
               variant='outlined'
               onChange={(event) => setSecretCode(event.target.value)}
               InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+              InputProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
             />
@@ -158,6 +161,9 @@ const SignUp = (props) => {
               variant='outlined'
               onChange={(event) => setUsername(event.target.value)}
               InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+              InputProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
             />
@@ -174,6 +180,9 @@ const SignUp = (props) => {
               InputLabelProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
+              InputProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='confirm-password'>
@@ -186,6 +195,9 @@ const SignUp = (props) => {
               variant='outlined'
               onChange={(event) => setConfirmedPassword(event.target.value)}
               InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+              InputProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
             />
@@ -202,6 +214,9 @@ const SignUp = (props) => {
               InputLabelProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
+              InputProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='city'>
@@ -214,6 +229,9 @@ const SignUp = (props) => {
               variant='outlined'
               onChange={(event) => setCity(event.target.value)}
               InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+              InputProps={{
                 style: { fontFamily: 'IBM Plex Serif, serif' },
               }}
             />
