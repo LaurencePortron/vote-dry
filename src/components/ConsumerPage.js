@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import ProducerCardTest from './ProducerCardTest';
-import Filter from './Filter';
 import Footer from '../components/Footer';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
