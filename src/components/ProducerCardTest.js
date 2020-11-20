@@ -6,7 +6,11 @@ const ProducerCardTest = (props) => {
   return (
     <div className='container'>
       <div className='producer-card'>
-        <img src={producer.image} style={{ width: '90px', height: '90px' }} />
+        <img
+          src={producer.image}
+          alt='some alcohol'
+          style={{ width: '90px', height: '90px' }}
+        />
         <p>{producer.name}</p>
 
         <p>{producer.ratings}</p>
