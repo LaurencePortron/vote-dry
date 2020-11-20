@@ -33,23 +33,22 @@ const VoteDry = () => {
             <img src={church} className='logoNav' alt='church' />
             <li className='firstLi'>
               <a onClick={scrollDownToNavWho} href='#about' className='link'>
-                Who We Are
+                Who ?
               </a>
             </li>
             <li>
               <a onClick={scrollDownToNavWhat} href='#about' className='link'>
-                What We Do
+                What ?
               </a>
             </li>
             <li>
               <a onClick={scrollDownToNavWhy} href='#contact' className='link'>
-                Why We Do It
+                Why ?
               </a>
             </li>
           </ul>
         </nav>
       </div>
-      <h1>VOTE DRY</h1>
       <div className='voteDrySections'>
         <h2 ref={whoRef}>Who We Are</h2>
         <div className='whoWeAre'>
