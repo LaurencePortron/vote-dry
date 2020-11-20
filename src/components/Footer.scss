@@ -24,7 +24,7 @@
 }
 
 .footerCatchphrase {
-  padding-bottom: 10px;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -32,5 +32,8 @@
     height: 50px;
     margin: 0 50px;
     padding-top: 25px;
+  }
+  .footerCatchphrase {
+    margin-bottom: 0 !important;
   }
 }
