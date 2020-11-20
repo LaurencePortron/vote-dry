@@ -1,10 +1,11 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import './ConsumerPage.css';
 import ProducerCard from './ProducerCard';
 import Filter from './Filter';
+import Footer from '../components/Footer';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
-import NavBarConsumer from './NavBarConsumer'
+import NavBarConsumer from './NavBarConsumer';
 
 export default function ConsumerPage(props) {
   // // const [producers, setProducers] = useState([]);
@@ -35,6 +36,7 @@ export default function ConsumerPage(props) {
         <Filter />
       </div>
       {displayProducers()}
+      <Footer />
     </div>
   );
 }
