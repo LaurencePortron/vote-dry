@@ -19,9 +19,6 @@ export default function ConsumerPage(props) {
       <div>
         <Filter />
       </div>
-      <div>
-        <p>Loloooooo</p>
-      </div>
       {producers.map((producer) => (
         <div>
           <Producer key={producer.id} producer={producer} />
