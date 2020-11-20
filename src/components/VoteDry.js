@@ -8,6 +8,7 @@ import voteDry3 from '../images/voteDry3.jpg';
 /* import voteDry4 from '../images/voteDry4.jpg'; */
 import voteDry5 from '../images/voteDry5.jpg';
 import { Link } from 'react-router-dom';
+import jesus from '../images/jesus.png';
 
 const VoteDry = () => {
   const whoRef = useRef();
@@ -120,6 +121,21 @@ const VoteDry = () => {
               Sacrified to the Financial Greed of the liquor trafic ?
             </p>
           </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <nav className='footer'>
+            <ul>
+              <img src={jesus} className='logoFooter' alt='jesus' />
+              <li className='footer-quote'>
+                "With men this is impossible, but with God all things are
+                possible." 
+                <br />
+                Matthew 19:26
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

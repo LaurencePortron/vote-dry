@@ -3,7 +3,6 @@ import './App.css';
 import VoteDry from './components/VoteDry';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import Footer from './components/Footer';
 import LoginContextProvider from './contexts/LoginContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ConsumerPage from './components/ConsumerPage';
@@ -20,7 +19,6 @@ function App() {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/consumer' component={ConsumerPage} />
         </Switch>
-        <Footer />
       </Router>
     </LoginContextProvider>
   );
