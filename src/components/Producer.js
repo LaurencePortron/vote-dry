@@ -1,6 +1,7 @@
 import React from 'react';
 import './Producer.css';
 import NavBarConsumer from './NavBarConsumer';
+import Footer from './Footer';
 
 const Producer = () => {
   let users = [
@@ -124,6 +125,7 @@ const Producer = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 };
