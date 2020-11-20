@@ -58,24 +58,26 @@ const ProducerDetail = (props) => {
               {producerDetail[0].alcohol}
             </h3>
             <div className='rating'></div>
-            <div>{producerDetail[0].price}$ per unit </div>
+            <p>{producerDetail[0].price}$ per unit </p>
 
             <div className='input'>
               <TextField
                 id='standard-number'
-                label='Number'
+                label='Quantity'
                 type='number'
                 value={quantity}
                 InputProps={{
                   inputProps: { min: 0, max: producerDetail[0].stock },
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
                 }}
                 InputLabelProps={{
                   shrink: true,
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
                 }}
                 onChange={(event) => setQuantity(event.target.value)}
               />
             </div>
-            <div>Total : {quantity * producerDetail[0].price}$</div>
+            <p>Total : {quantity * producerDetail[0].price}$</p>
             <div className='button'>
               {quantity === 0 ? (
                 <Button
@@ -87,7 +89,12 @@ const ProducerDetail = (props) => {
                   Send my order
                 </Button>
               ) : (
-                <Button variant='contained' type='button' onClick={handleClick}>
+                <Button
+                  variant='contained'
+                  type='button'
+                  onClick={handleClick}
+                  style={{ fontFamily: 'IBM Plex Serif, serif' }}
+                >
                   Send my order
                 </Button>
               )}
