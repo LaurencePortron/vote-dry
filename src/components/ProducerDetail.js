@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
 import Footer from '../components/Footer';
@@ -9,12 +10,15 @@ import Button from '@material-ui/core/Button';
 import '../styles/ProducerDetail.scss';
 import NavBarConsumer from './NavBarConsumer';
 import { BasketContext } from '../context/BasketContext';
+import FeedBacks from './FeedBacks';
 
 const ProducerDetail = (props) => {
   const [producerDetail, setProducerDetail] = useState([]);
   const [quantity, setQuantity] = useState(0);
   const producerId = props.match.params.producer;
   const { basket, setBasket } = useContext(BasketContext);
+
+  const history = useHistory();
 
   useEffect(() => {
     axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
@@ -56,6 +60,12 @@ const ProducerDetail = (props) => {
     producerDetail.length !== 0 && (
       <>
         <NavBarConsumer />
+        <div
+          onClick={() => history.goBack()}
+          style={{ cursor: 'pointer', marginTop: '20px', marginLeft: '30px' }}
+        >
+          Go back
+        </div>
         <div className='producer-detail-container'>
           <section className='producer-detail'>
             <h1>
@@ -136,6 +146,7 @@ const ProducerDetail = (props) => {
                 </>
               )}
             </div>
+            <FeedBacks producerDetail={producerDetail} />
           </section>
           <footer>
             <Footer />

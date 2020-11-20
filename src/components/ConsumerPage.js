@@ -8,7 +8,7 @@ import { BasketContext } from '../context/BasketContext';
 import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
 
-export default function ConsumerPage(props) {
+export default function ConsumerPage() {
   const { producers, alcoholSearched } = useContext(ProducerContext);
   const { basket, setBasket } = useContext(BasketContext);
 
