@@ -14,6 +14,7 @@ const useTextFieldStyles = makeStyles((theme) => ({
       width: 200,
       display: 'flex',
       flexDirection: 'column',
+      fontFamily: 'IBM Plex Serif, serif'
     },
   },
 }));

@@ -3,8 +3,8 @@ import './App.css';
 import VoteDry from './components/VoteDry';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import Footer from './components/Footer';
 import ProducerDetail from './components/ProducerDetail';
+import OrderConfirmed from './components/OrderConfirmed';
 import LoginContextProvider from './context/LoginContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ConsumerPage from './components/ConsumerPage';
@@ -25,10 +25,14 @@ function App() {
               path='/consumer/:producer'
               component={ProducerDetail}
             />
+            <Route
+              exact
+              path='/consumer/orderconfirmed/:producer'
+              component={OrderConfirmed}
+            />
           </ProducerContextProvider>
         </LoginContextProvider>
       </Switch>
-      <Footer />
     </Router>
   );
 }

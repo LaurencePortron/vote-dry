@@ -9,6 +9,7 @@ import '../styles/ProducerDetail.scss';
 
 const ProducerDetail = (props) => {
   const [producerDetail, setProducerDetail] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   const producerId = props.match.params.producer;
 
   useEffect(() => {
@@ -20,8 +21,17 @@ const ProducerDetail = (props) => {
   }, [producerId]);
 
   const handleClick = () => {
-    
-  }
+    const finalQuantity = producerDetail[0].stock - quantity;
+    axios
+      .post(
+        `http://192.168.68.111:5000/producer?id=${producerId}&&stock=${finalQuantity}`
+      )
+      .then((res) => console.log(res))
+      .then(props.history.push(`/consumer/orderconfirmed/${producerId}`))
+      .catch((err) => console.log(err));
+  };
+
+  console.log(producerDetail);
 
   return (
     producerDetail.length !== 0 && (
@@ -33,15 +43,6 @@ const ProducerDetail = (props) => {
           Alcohol available : {producerDetail[0].stock}{' '}
           {producerDetail[0].alcohol}
         </h3>
-        <TextField
-          id='standard-number'
-          label='Number'
-          type='number'
-          InputProps={{ inputProps: { max: producerDetail[0].stock } }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
         <div className='rating'>
           <Box component='fieldset' mb={3} borderColor='transparent'>
             <Typography component='legend'>Rating :</Typography>
@@ -52,7 +53,24 @@ const ProducerDetail = (props) => {
               max={10}
             />
           </Box>
-          <Button variant='contained' type='submit' onClick={handleClick}>
+        </div>
+        <div className='input'>
+          <TextField
+            id='standard-number'
+            label='Number'
+            type='number'
+            value={quantity}
+            InputProps={{
+              inputProps: { min: 0, max: producerDetail[0].stock },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+        </div>
+        <div className='button'>
+          <Button variant='contained' type='button' onClick={handleClick}>
             Send my order
           </Button>
         </div>
