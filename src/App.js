@@ -6,6 +6,7 @@ import SignUp from './components/SignUp';
 import LoginContextProvider from './contexts/LoginContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ConsumerPage from './components/ConsumerPage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/consumer' component={ConsumerPage} />
         </Switch>
+        <Footer />
       </Router>
     </LoginContextProvider>
   );

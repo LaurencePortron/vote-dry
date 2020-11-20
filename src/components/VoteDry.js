@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import './VoteDry.scss';
 import './NavBar.scss';
 import church from '../images/church.png';
-/* import voteDry1 from '../images/voteDry1.jpeg'; */
 import voteDry2 from '../images/voteDry2.jpg';
 import voteDry3 from '../images/voteDry3.jpg';
 import voteDry5 from '../images/voteDry5.jpg';
