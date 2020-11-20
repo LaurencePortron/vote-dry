@@ -16,31 +16,22 @@ import ProducerContextProvider from './context/ProducerContext';
 
 function App() {
   return (
-    <LoginContextProvider>
-      <ProducerContextProvider>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={VoteDry} />
+    <Router>
+      <Switch>
+        <Route exact path='/' component={VoteDry} />
 
-            <Route path='/signin' component={SignIn} />
-            <Route exact path='/signup' component={SignUp} />
-            <Route exact path='/consumer' component={ConsumerPage} />
-            <Route
-              exact
-              path='/consumer/:producer'
-              component={ProducerDetail}
-            />
-            <Route
-              exact
-              path='/consumer/orderconfirmed/:producer'
-              component={OrderConfirmed}
-            />
-            <Route path='/producer' component={Producer} />
-          </Switch>
-          
-        </Router>
-      </ProducerContextProvider>
-    </LoginContextProvider>
+        <Route path='/signin' component={SignIn} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/consumer' component={ConsumerPage} />
+        <Route exact path='/consumer/:producer' component={ProducerDetail} />
+        <Route
+          exact
+          path='/consumer/orderconfirmed/:producer'
+          component={OrderConfirmed}
+        />
+        <Route path='/producer' component={Producer} />
+      </Switch>
+    </Router>
   );
 }
 

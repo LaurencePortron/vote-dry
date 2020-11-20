@@ -8,14 +8,7 @@ import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
 
 export default function ConsumerPage(props) {
-  // // const [producers, setProducers] = useState([]);
-  // // const [bestRatings, setBestRatings] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
-  //     setProducers(response.data);
-  //   });
-  // }, []);
   const { producers, alcoholSearched } = useContext(ProducerContext);
 
   const displayProducers = () => {
