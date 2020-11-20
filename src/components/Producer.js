@@ -1,10 +1,7 @@
-import React, { useState, useContext } from 'react';
-import { Login } from '../contexts/LoginContext';
+import React from 'react';
 import './Producer.css';
 
-const Producer = (props) => {
-  const { currentLogin, setCurrentLogin } = useContext(Login);
-
+const Producer = () => {
   let users = [
     {
       id: 2,
@@ -91,14 +88,14 @@ const Producer = (props) => {
           <h2>Disputes</h2>
           <div className='main-disputes'>
             <div className='disputes'>
-              {users[0].litiges[0].buyer}
+              <p>User: {users[0].litiges[0].buyer}</p>
               <br />
-              {users[0].litiges[0].status}
+              <p className='text-disputes'>{users[0].litiges[0].status}</p>
             </div>
             <div className='disputes'>
-              {users[0].litiges[1].buyer}
+              <p>User: {users[0].litiges[1].buyer}</p>
               <br />
-              {users[0].litiges[1].status}
+              <p className='text-disputes'>{users[0].litiges[1].status}</p>
             </div>
           </div>
         </div>
@@ -110,7 +107,9 @@ const Producer = (props) => {
               <div key={i} className='cards-reviews'>
                 <li>{elem.username} user</li>
                 <li>Rating: {elem.rating}</li>
-                <li>Reviews: {elem.message}</li>
+                <li>
+                  <em>Reviews: {elem.message}</em>
+                </li>
               </div>
             );
           })}
