@@ -62,7 +62,11 @@ const SearchBar = () => {
               className: classes.input,
               endAdornment: (
                 <SearchIcon
-                  style={{ color: 'black', cursor: 'pointer' }}
+                  style={{
+                    color: 'black',
+                    cursor: 'pointer',
+                    fontSize: '30px',
+                  }}
                   onClick={searchForAlcohol}
                 />
               ),

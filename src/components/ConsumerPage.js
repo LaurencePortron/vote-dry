@@ -23,9 +23,7 @@ export default function ConsumerPage(props) {
     <div>
       <NavBarConsumer />
       <SearchBar />
-      <div>
-        <Filter />
-      </div>
+
       {displayProducers()}
     </div>
   );
