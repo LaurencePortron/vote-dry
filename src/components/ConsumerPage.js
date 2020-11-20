@@ -6,13 +6,7 @@ import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
 
 export default function ConsumerPage(props) {
-  const { getProducerList, producers, alcoholSearched } = useContext(
-    ProducerContext
-  );
-
-  useEffect(() => {
-    getProducerList();
-  }, []);
+  const { producers, alcoholSearched } = useContext(ProducerContext);
 
   const displayProducers = () => {
     return alcoholSearched.length > 0
