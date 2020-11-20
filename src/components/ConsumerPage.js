@@ -6,11 +6,7 @@ import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
 
 export default function ConsumerPage(props) {
-  const { getProducerList, producers } = useContext(ProducerContext);
-
-  useEffect(() => {
-    getProducerList();
-  }, []);
+  const { producers } = useContext(ProducerContext);
 
   return (
     <div>

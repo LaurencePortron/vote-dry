@@ -1,20 +1,19 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const ProducerContext = createContext();
+export const ProducerContext = createContext({});
 
 const ProducerContextProvider = ({ children }) => {
   const [producers, setProducers] = useState([]);
 
-  const getProducerList = () => {
+  useEffect(() => {
     axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
       setProducers(response.data);
-      console.log(response.data);
     });
-  };
+  }, []);
 
   return (
-    <ProducerContext.Provider value={{ getProducerList, producers }}>
+    <ProducerContext.Provider value={{ producers }}>
       {children}
     </ProducerContext.Provider>
   );
