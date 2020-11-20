@@ -6,10 +6,12 @@ import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
 import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
+import { Login } from '../context/LoginContext';
 
 export default function ConsumerPage(props) {
-
   const { producers, alcoholSearched } = useContext(ProducerContext);
+
+  const { currentLogin } = useContext(Login);
 
   const displayProducers = () => {
     return alcoholSearched.length > 0
@@ -21,15 +23,26 @@ export default function ConsumerPage(props) {
         });
   };
 
-  return (
-    <div>
-      <NavBarConsumer />
-      <div className='searchbar-container'>
-        <SearchBar />
-      </div>
+  const isLogin = (props) => {
+    return currentLogin.length > 0 ? (
+      <div>
+        <NavBarConsumer />
+        <div className='searchbar-container'>
+          <SearchBar />
+        </div>
 
-      <div className='container-map'>{displayProducers()}</div>
-      <Footer />
-    </div>
-  );
+        <div className='container-map'>{displayProducers()}</div>
+        <Footer />
+      </div>
+    ) : (
+      <div>
+        Access forbidden
+        {setTimeout(() => {
+          props.history.push('/signin');
+        }, 3000)}
+      </div>
+    );
+  };
+
+  return <>{isLogin(props)}</>;
 }
