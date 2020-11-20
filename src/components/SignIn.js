@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, Redirect } from 'react-router-dom';
-import { Login } from '../contexts/LoginContext';
+import { Link } from 'react-router-dom';
+import { Login } from '../context/LoginContext';
 import axios from 'axios';
 import '../styles/Login.scss';
 
@@ -14,6 +14,7 @@ const useTextFieldStyles = makeStyles((theme) => ({
       width: 200,
       display: 'flex',
       flexDirection: 'column',
+      fontFamily: 'IBM Plex Serif, serif'
     },
   },
 }));

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import './ConsumerPage.css';
-import Producer from './Producer';
+import ProducerCard from './ProducerCard';
 import Filter from './Filter';
+import SearchBar from './SearchBar';
+import { ProducerContext } from '../context/ProducerContext';
+import NavBarConsumer from './NavBarConsumer';
 
 export default function ConsumerPage(props) {
   const [producers, setProducers] = useState([]);
@@ -13,17 +15,26 @@ export default function ConsumerPage(props) {
       setProducers(response.data);
     });
   }, []);
+  const { producers, alcoholSearched } = useContext(ProducerContext);
+
+  const displayProducers = () => {
+    return alcoholSearched.length > 0
+      ? alcoholSearched.map((producer) => {
+          return <ProducerCard key={producer.id} producer={producer} />;
+        })
+      : producers.map((producer) => {
+          return <ProducerCard key={producer.id} producer={producer} />;
+        });
+  };
 
   return (
     <div>
+      <NavBarConsumer />
+      <SearchBar />
       <div>
         <Filter />
       </div>
-      {producers.map((producer) => (
-        <div>
-          <Producer key={producer.id} producer={producer} />
-        </div>
-      ))}
+      {displayProducers()}
     </div>
   );
 }

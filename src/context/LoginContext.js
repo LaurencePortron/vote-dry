@@ -5,8 +5,6 @@ export const Login = createContext();
 export default function LoginProvider({ children }) {
   const [currentLogin, setCurrentLogin] = useState({});
 
-  console.log(currentLogin);
-
   return (
     <Login.Provider
       value={{
