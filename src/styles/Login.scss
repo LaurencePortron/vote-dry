@@ -16,6 +16,10 @@
       .password {
         margin-bottom: 20px;
       }
+      .wrong-login{
+        color:red;
+        margin-top: 0;
+      }
     }
     p {
       margin-top: 30px;
@@ -48,5 +52,9 @@
   }
   .signup-button {
     margin-bottom: 20px;
+  }
+  .wrong-secret-code{
+    color:red;
+    margin-top:0;
   }
 }
