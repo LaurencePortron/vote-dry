@@ -41,7 +41,10 @@ const Producer = () => {
       ],
       litiges: [
         { buyer: 'Matthieu Martinot', status: 'unpaid' },
-        { buyer: 'Yoan Vincent', status: 'moneyless, he is a php worker...' },
+        {
+          buyer: 'Yoan Vincent',
+          status: "Again, PHP guys'll never pay you...",
+        },
       ],
       feedbacks: [
         {
