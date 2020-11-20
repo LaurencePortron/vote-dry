@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './NavBar.css';
+import './NavBarConsumer.scss';
 
 import { NavLink } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
@@ -30,8 +30,16 @@ const NavBarConsumer = () => {
       <div className={classes.root}>
         <AppBar className={classes.root} position='static'>
           <Toolbar>
-            <Typography variant='h6' className={classes.title}>
-              <NavLink to='/consumer'>Vote Wet</NavLink>
+            <Typography
+              variant='h6'
+              className={classes.title}
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                fontSize: '26px',
+              }}
+            >
+              Booze Market
             </Typography>
             <Button>
               <Typography
@@ -40,7 +48,7 @@ const NavBarConsumer = () => {
             </Button>
 
             <Typography>
-              <NavLink to='/'>
+              <NavLink to='/' style={{ color: 'white' }}>
                 <AiOutlineLogout
                   style={{ fontSize: '20px' }}
                   onClick={() => setCurrentLogin([])}

@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
 import axios from 'axios';
+import Footer from '../components/Footer';
 import '../styles/Login.scss';
 
 const useTextFieldStyles = makeStyles((theme) => ({
@@ -14,6 +15,7 @@ const useTextFieldStyles = makeStyles((theme) => ({
       width: 200,
       display: 'flex',
       flexDirection: 'column',
+      fontFamily: 'IBM Plex Serif, serif',
     },
   },
 }));
@@ -23,6 +25,7 @@ const SignIn = (props) => {
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [isLoginOk, setIsLoginOk] = useState(true);
 
   const { currentLogin, setCurrentLogin } = useContext(Login);
 
@@ -48,9 +51,15 @@ const SignIn = (props) => {
             ? props.history.push('/producer')
             : props.history.push('/consumer')
         )
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          err == 'Error: Request failed with status code 403'
+            ? setIsLoginOk(false)
+            : setIsLoginOk(true);
+        });
     }
   };
+
+  console.log(isLoginOk);
 
   const validation = () => {
     if (!username) {
@@ -66,48 +75,69 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className='signin-wrapper'>
-      <h1>Sign in</h1>
-      <form
-        className={useTextFieldStyles().root}
-        noValidate
-        autoComplete='off'
-        onSubmit={handleSubmit}
-      >
-        <div className='username'>
-          <TextField
-            error={usernameError ? true : false}
-            label='Username'
-            placeholder={usernameError}
-            variant='outlined'
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-          />
-        </div>
-        <div className='password'>
-          <TextField
-            error={passwordError ? true : false}
-            type='password'
-            label='Password'
-            placeholder={passwordError}
-            variant='outlined'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <Button variant='contained' type='submit'>
-            Sign in
-          </Button>
-        </div>
-      </form>
+    <div className='signin-wrapper-container'>
+      <div className='signin-wrapper'>
+        <h1>Sign in</h1>
+        <form
+          className={useTextFieldStyles().root}
+          noValidate
+          autoComplete='off'
+          onSubmit={handleSubmit}
+        >
+          <div className='username'>
+            <TextField
+              error={usernameError ? true : false}
+              label='Username'
+              placeholder={usernameError}
+              variant='outlined'
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+            />
+          </div>
+          <div className='password'>
+            <TextField
+              error={passwordError ? true : false}
+              type='password'
+              label='Password'
+              placeholder={passwordError}
+              variant='outlined'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
+            />
+          </div>
+          {!isLoginOk && (
+            <p className='wrong-login'>Wrong username or password</p>
+          )}
+          <div>
+            <Button
+              variant='contained'
+              type='submit'
+              style={{ fontFamily: 'IBM Plex Serif, serif' }}
+            >
+              Sign in
+            </Button>
+          </div>
+        </form>
 
-      <p>New to Vote Dry ?</p>
-      <Link to={`/signup`}>
-        <Button variant='contained'>Create your account</Button>
-      </Link>
+        <p>New to Vote Dry ?</p>
+        <Link to={`/signup`}>
+          <Button
+            variant='contained'
+            style={{ fontFamily: 'IBM Plex Serif, serif' }}
+          >
+            Create your account
+          </Button>
+        </Link>
+      </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };

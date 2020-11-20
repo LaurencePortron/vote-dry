@@ -60,6 +60,7 @@ const SearchBar = () => {
               ...params.InputProps,
               type: 'search',
               className: classes.input,
+              placeholder: 'Search for alcohol...',
               endAdornment: (
                 <SearchIcon
                   style={{
