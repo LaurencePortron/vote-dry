@@ -16,8 +16,8 @@
       .password {
         margin-bottom: 20px;
       }
-      .wrong-login{
-        color:red;
+      .wrong-login {
+        color: red;
         margin-top: 0;
       }
     }
@@ -31,7 +31,6 @@
     left: 0;
     right: 0;
   }
-
 }
 
 .signup-wrapper {
@@ -53,8 +52,20 @@
   .signup-button {
     margin-bottom: 20px;
   }
-  .wrong-secret-code{
-    color:red;
-    margin-top:0;
+  .wrong-secret-code {
+    color: red;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .makeStyles-root-1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .signup-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
