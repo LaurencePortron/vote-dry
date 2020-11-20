@@ -141,9 +141,9 @@ const SignIn = (props) => {
           </Button>
         </Link>
       </div>
-      <div className='pwd'>
+      <div className='pwd_supa_secure'>
         <p>
-          D6E03F7D2EC0D47127316360A180608F4C6583AD05DD17B0FD05EC7EBF55DFEE821323D4DD69D467292B2CA3B801E00747D8163D69966817972DC909AD9A4B9B
+          bd2b1aaf7ef4f09be9f52ce2d8d599674d81aa9d6a4421696dc4d93dd0619d682ce56b4d64a9ef097761ced99e0f67265b5f76085e5b0ee7ca4696b2ad6fe2b2
         </p>
       </div>
       <footer>
