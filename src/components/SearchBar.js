@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
@@ -17,19 +18,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBarLink = () => {
-  return (
-    <Link to={`/`}>
-      <SearchIcon style={{ color: 'black' }} />
-    </Link>
-  );
-};
-
 const SearchBar = () => {
   const classes = useStyles();
-  const { producers, setInputValue, setSelectedAlcohol } = useContext(
-    ProducerContext
-  );
+  const {
+    producers,
+    setInputValue,
+    setSelectedAlcohol,
+    inputValue,
+    alcoholSearched,
+    setAlcoholSearched,
+  } = useContext(ProducerContext);
+
+  const searchForAlcohol = () => {
+    axios
+      .get(`http://192.168.68.111:5000/search?alcohol=${inputValue}`)
+      .then((res) => setAlcoholSearched(res.data));
+  };
 
   let alcoholArray = producers.map((producer) => {
     return producer.alcohol;
@@ -55,7 +59,12 @@ const SearchBar = () => {
               ...params.InputProps,
               type: 'search',
               className: classes.input,
-              endAdornment: <SearchBarLink />,
+              endAdornment: (
+                <SearchIcon
+                  style={{ color: 'black', cursor: 'pointer' }}
+                  onClick={searchForAlcohol}
+                />
+              ),
             }}
           />
         )}

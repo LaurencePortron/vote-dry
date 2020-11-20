@@ -7,6 +7,7 @@ const ProducerContextProvider = ({ children }) => {
   const [producers, setProducers] = useState([]);
   const [selectedAlcohol, setSelectedAlcohol] = useState([]);
   const [inputValue, setInputValue] = useState([]);
+  const [alcoholSearched, setAlcoholSearched] = useState([]);
 
   const getProducerList = () => {
     axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
@@ -17,7 +18,15 @@ const ProducerContextProvider = ({ children }) => {
 
   return (
     <ProducerContext.Provider
-      value={{ getProducerList, producers, setInputValue, setSelectedAlcohol }}
+      value={{
+        getProducerList,
+        producers,
+        setInputValue,
+        setSelectedAlcohol,
+        inputValue,
+        alcoholSearched,
+        setAlcoholSearched,
+      }}
     >
       {children}
     </ProducerContext.Provider>

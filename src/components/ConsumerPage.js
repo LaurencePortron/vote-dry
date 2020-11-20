@@ -6,11 +6,23 @@ import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
 
 export default function ConsumerPage(props) {
-  const { getProducerList, producers } = useContext(ProducerContext);
+  const { getProducerList, producers, alcoholSearched } = useContext(
+    ProducerContext
+  );
 
   useEffect(() => {
     getProducerList();
   }, []);
+
+  const displayProducers = () => {
+    return alcoholSearched.length > 0
+      ? alcoholSearched.map((producer) => {
+          return <Producer key={producer.id} producer={producer} />;
+        })
+      : producers.map((producer) => {
+          return <Producer key={producer.id} producer={producer} />;
+        });
+  };
 
   return (
     <div>
@@ -18,11 +30,7 @@ export default function ConsumerPage(props) {
       <div>
         <Filter />
       </div>
-      {producers.map((producer) => (
-        <div>
-          <Producer key={producer.id} producer={producer} />
-        </div>
-      ))}
+      {displayProducers()}
     </div>
   );
 }
