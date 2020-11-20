@@ -40,7 +40,7 @@ const NavBarConsumer = () => {
             </Button>
 
             <Typography>
-              <NavLink to='/'>
+              <NavLink to='/' style={{ color: 'white' }}>
                 <AiOutlineLogout
                   style={{ fontSize: '20px' }}
                   onClick={() => setCurrentLogin([])}
