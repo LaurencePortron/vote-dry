@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from '../components/Footer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
@@ -115,105 +116,112 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className='signup-wrapper'>
-      <h1>Sign up</h1>
-      {isSecretCodeUnvalid && <p>Wrong secret code</p>}
-      <p>All fields are required</p>
-      <form className={useTextFieldStyles().root} noValidate autoComplete='off'>
-        <div className='secret-code'>
-          <TextField
-            value={secretCode}
-            error={secretCodeError ? true : false}
-            type='text'
-            label='Secret Code'
-            placeholder='Enter the secret code'
-            variant='outlined'
-            onChange={(event) => setSecretCode(event.target.value)}
-          />
-        </div>
-        <div className='username'>
-          <TextField
-            value={username}
-            error={usernameError ? true : false}
-            label='Username'
-            placeholder='Enter your username'
-            variant='outlined'
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </div>
-        <div className='password'>
-          <TextField
-            value={password}
-            error={passwordError ? true : false}
-            type='password'
-            label='Password'
-            placeholder='Enter your password'
-            variant='outlined'
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-        <div className='confirm-password'>
-          <TextField
-            value={confirmPassword}
-            error={confirmedPasswordError ? true : false}
-            type='password'
-            label='Confirm your password'
-            placeholder='Confirm your password'
-            variant='outlined'
-            onChange={(event) => setConfirmedPassword(event.target.value)}
-          />
-        </div>
-        <div className='email'>
-          <TextField
-            value={email}
-            error={emailError ? true : false}
-            type='email'
-            label='Email'
-            placeholder='Enter your email'
-            variant='outlined'
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </div>
-        <div className='city'>
-          <TextField
-            value={city}
-            error={cityError ? true : false}
-            type='text'
-            label='City'
-            placeholder='Enter your city'
-            variant='outlined'
-            onChange={(event) => setCity(event.target.value)}
-          />
-        </div>
-
-        <FormControl component='fieldset'>
-          <FormLabel component='legend'>I'm a</FormLabel>
-          <RadioGroup aria-label='isProducer' name='isProducer'>
-            <FormControlLabel
-              value='producer'
-              control={<Radio />}
-              label='Producer'
-              onChange={(event) => setIsProductor(true)}
+    <>
+      <div className='signup-wrapper'>
+        <h1>Sign up</h1>
+        {isSecretCodeUnvalid && <p>Wrong secret code</p>}
+        <p>All fields are required</p>
+        <form
+          className={useTextFieldStyles().root}
+          noValidate
+          autoComplete='off'
+        >
+          <div className='secret-code'>
+            <TextField
+              value={secretCode}
+              error={secretCodeError ? true : false}
+              type='text'
+              label='Secret Code'
+              placeholder='Enter the secret code'
+              variant='outlined'
+              onChange={(event) => setSecretCode(event.target.value)}
             />
-            <FormControlLabel
-              value='customer'
-              control={<Radio />}
-              label='Customer'
-              onChange={(event) => setIsProductor(false)}
+          </div>
+          <div className='username'>
+            <TextField
+              value={username}
+              error={usernameError ? true : false}
+              label='Username'
+              placeholder='Enter your username'
+              variant='outlined'
+              onChange={(event) => setUsername(event.target.value)}
             />
-          </RadioGroup>
-        </FormControl>
-        <div className='signup-button'>
-          <Button variant='contained' onClick={handleSubmit}>
-            Sign up
-          </Button>
-        </div>
-      </form>
+          </div>
+          <div className='password'>
+            <TextField
+              value={password}
+              error={passwordError ? true : false}
+              type='password'
+              label='Password'
+              placeholder='Enter your password'
+              variant='outlined'
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div className='confirm-password'>
+            <TextField
+              value={confirmPassword}
+              error={confirmedPasswordError ? true : false}
+              type='password'
+              label='Confirm your password'
+              placeholder='Confirm your password'
+              variant='outlined'
+              onChange={(event) => setConfirmedPassword(event.target.value)}
+            />
+          </div>
+          <div className='email'>
+            <TextField
+              value={email}
+              error={emailError ? true : false}
+              type='email'
+              label='Email'
+              placeholder='Enter your email'
+              variant='outlined'
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div className='city'>
+            <TextField
+              value={city}
+              error={cityError ? true : false}
+              type='text'
+              label='City'
+              placeholder='Enter your city'
+              variant='outlined'
+              onChange={(event) => setCity(event.target.value)}
+            />
+          </div>
 
-      <Link to={`/`}>
-        <Button variant='contained'>Already have an account ? Sign-in</Button>
-      </Link>
-    </div>
+          <FormControl component='fieldset'>
+            <FormLabel component='legend'>I'm a</FormLabel>
+            <RadioGroup aria-label='isProducer' name='isProducer'>
+              <FormControlLabel
+                value='producer'
+                control={<Radio />}
+                label='Producer'
+                onChange={(event) => setIsProductor(true)}
+              />
+              <FormControlLabel
+                value='customer'
+                control={<Radio />}
+                label='Customer'
+                onChange={(event) => setIsProductor(false)}
+              />
+            </RadioGroup>
+          </FormControl>
+          <div className='signup-button'>
+            <Button variant='contained' onClick={handleSubmit}>
+              Sign up
+            </Button>
+          </div>
+        </form>
+
+        <Link to={`/`}>
+          <Button variant='contained'>Already have an account ? Sign-in</Button>
+        </Link>
+      </div>
+      <Footer />
+    </>
   );
 };
 

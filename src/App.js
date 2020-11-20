@@ -4,6 +4,7 @@ import VoteDry from './components/VoteDry';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Producer from './components/Producer';
+
 import LoginContextProvider from './context/LoginContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -36,6 +37,7 @@ function App() {
             />
             <Route path='/producer' component={Producer} />
           </Switch>
+          
         </Router>
       </ProducerContextProvider>
     </LoginContextProvider>
