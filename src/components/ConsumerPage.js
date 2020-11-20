@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
 import './ConsumerPage.css';
 import Producer from './Producer';
 import Filter from './Filter';
+import SearchBar from './SearchBar';
+import { ProducerContext } from '../context/ProducerContext';
+import NavBarConsumer from './NavBarConsumer';
 
 export default function ConsumerPage(props) {
-  const [producers, setProducers] = useState([]);
+  const { producers, alcoholSearched } = useContext(ProducerContext);
 
-  useEffect(() => {
-    axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
-      setProducers(response.data);
-    });
-  }, []);
+  const displayProducers = () => {
+    return alcoholSearched.length > 0
+      ? alcoholSearched.map((producer) => {
+          return <Producer key={producer.id} producer={producer} />;
+        })
+      : producers.map((producer) => {
+          return <Producer key={producer.id} producer={producer} />;
+        });
+  };
 
   return (
     <div>
-      <div className='filter'>
+      <NavBarConsumer />
+      <SearchBar />
+      <div>
         <Filter />
       </div>
-      <div className='cards'>
-        {producers.map((producer) => (
-          <div>
-            <Producer key={producer.id} producer={producer} />
-          </div>
-        ))}
-      </div>
+      {displayProducers()}
     </div>
   );
 }
