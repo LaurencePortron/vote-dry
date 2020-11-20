@@ -10,9 +10,9 @@ const OrderConfirmed = (props) => {
 
   const producerId = parseInt(props.match.params.producer);
 
-  // setTimeout(() => {
-  //   props.history.push('/consumer');
-  // }, 5000);
+  setTimeout(() => {
+    props.history.push('/consumer');
+  }, 5000);
 
   return (
     producers.length !== 0 && (
@@ -25,11 +25,13 @@ const OrderConfirmed = (props) => {
               producers.filter((producer) => producer.id === producerId)[0]
                 .meetMessage
             }{' '}
-            at {moment().add(2, 'hours').format('hh:mm')} ...
+            at {moment().add(2, 'hours').format('hh:mm')}
           </h2>
           <h2>Don't be in late and don't tell anyone ...</h2>
         </div>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </>
     )
   );
