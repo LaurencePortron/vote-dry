@@ -8,7 +8,6 @@ import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
 
 export default function ConsumerPage(props) {
-
   const { producers, alcoholSearched } = useContext(ProducerContext);
 
   const displayProducers = () => {
