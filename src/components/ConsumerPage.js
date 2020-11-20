@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ProducerCardTest from './ProducerCardTest';
-import Filter from './Filter';
 import Footer from '../components/Footer';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';

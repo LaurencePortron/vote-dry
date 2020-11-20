@@ -39,67 +39,76 @@ const ProducerDetail = (props) => {
   console.log(producerDetail);
 
   return (
-    <>
-      <NavBarConsumer />
-      <div className='producer-detail-container'>
-        <section className='producer-detail'>
-          <h1>
-            {producerDetail[0].name} from {producerDetail[0].city}
-          </h1>
-          <Box component='fieldset' mb={3} borderColor='transparent'>
-            <Typography component='legend'></Typography>
-            <Rating
-              name='read-only'
-              value={producerDetail[0].ratings}
-              readOnly
-              max={10}
-            />
-          </Box>
-          <h3>
-            Alcohol available : {producerDetail[0].stock}{' '}
-            {producerDetail[0].alcohol}
-          </h3>
-          <div className='rating'></div>
-          <div>{producerDetail[0].price}$ per unit </div>
+    producerDetail.length !== 0 && (
+      <>
+        <NavBarConsumer />
+        <div className='producer-detail-container'>
+          <section className='producer-detail'>
+            <h1>
+              {producerDetail[0].name} from {producerDetail[0].city}
+            </h1>
+            <Box component='fieldset' mb={3} borderColor='transparent'>
+              <Typography component='legend'></Typography>
+              <Rating
+                name='read-only'
+                value={producerDetail[0].ratings}
+                readOnly
+                max={10}
+              />
+            </Box>
+            <h3>
+              Alcohol available : {producerDetail[0].stock}{' '}
+              {producerDetail[0].alcohol}
+            </h3>
+            <div className='rating'></div>
+            <p>{producerDetail[0].price}$ per unit </p>
 
-          <div className='input'>
-            <TextField
-              id='standard-number'
-              label='Number'
-              type='number'
-              value={quantity}
-              InputProps={{
-                inputProps: { min: 0, max: producerDetail[0].stock },
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onChange={(event) => setQuantity(event.target.value)}
-            />
-          </div>
-          <div>Total : {quantity * producerDetail[0].price}$</div>
-          <div className='button'>
-            {quantity === 0 ? (
-              <Button
-                disabled
-                variant='contained'
-                type='button'
-                onClick={handleClick}
-              >
-                Send my order
-              </Button>
-            ) : (
-              <Button variant='contained' type='button' onClick={handleClick}>
-                Send my order
-              </Button>
-            )}
-          </div>
-        </section>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    </>
+            <div className='input'>
+              <TextField
+                id='standard-number'
+                label='Quantity'
+                type='number'
+                value={quantity}
+                InputProps={{
+                  inputProps: { min: 0, max: producerDetail[0].stock },
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                  style: { fontFamily: 'IBM Plex Serif, serif' },
+                }}
+                onChange={(event) => setQuantity(event.target.value)}
+              />
+            </div>
+            <p>Total : {quantity * producerDetail[0].price}$</p>
+            <div className='button'>
+              {quantity === 0 ? (
+                <Button
+                  disabled
+                  variant='contained'
+                  type='button'
+                  onClick={handleClick}
+                >
+                  Send my order
+                </Button>
+              ) : (
+                <Button
+                  variant='contained'
+                  type='button'
+                  onClick={handleClick}
+                  style={{ fontFamily: 'IBM Plex Serif, serif' }}
+                >
+                  Send my order
+                </Button>
+              )}
+            </div>
+          </section>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </>
+    )
   );
 };
 
