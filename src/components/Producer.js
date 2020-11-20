@@ -2,6 +2,8 @@ import React from 'react';
 import './Producer.css';
 import NavBarConsumer from './NavBarConsumer';
 import Footer from './Footer';
+import Button from '@material-ui/core/Button';
+import ReactCardFlip from 'react-card-flip';
 
 const Producer = () => {
   let users = [
@@ -45,7 +47,7 @@ const Producer = () => {
         { buyer: 'Matthieu Martinot', status: 'unpaid' },
         {
           buyer: 'Yoan Vincent',
-          status: "Again, PHP guys'll never pay you...",
+          status: 'Chuck Norris said : take care to PHP guys...',
         },
       ],
       feedbacks: [
@@ -67,7 +69,7 @@ const Producer = () => {
       ],
     },
   ];
-  console.log(users[0].orders);
+  const handleClickDisputes = () => alert('This user is on your blacklist !');
   return (
     <>
       <NavBarConsumer />
@@ -84,7 +86,7 @@ const Producer = () => {
                       <li>Buyer: {e.buyer}</li>
                       <li>Quantity: {e.quantity}</li>
                       <li>Price per unit: {e.unitPrice}$</li>
-                      <li>Order Date: {e.date}</li>
+                      <li>Due Date: {e.date}</li>
                     </div>
                   );
                 })}
@@ -99,24 +101,38 @@ const Producer = () => {
                   <p>User: {users[0].litiges[0].buyer}</p>
                   <br />
                   <p className='text-disputes'>{users[0].litiges[0].status}</p>
+                  <Button
+                    onClick={handleClickDisputes}
+                    variant='contained'
+                    color='secondary'
+                  >
+                    Report this guy
+                  </Button>
                 </div>
                 <div className='disputes'>
                   <p>User: {users[0].litiges[1].buyer}</p>
                   <br />
                   <p className='text-disputes'>{users[0].litiges[1].status}</p>
+                  <Button
+                    onClick={handleClickDisputes}
+                    variant='contained'
+                    color='secondary'
+                  >
+                    Report this guy
+                  </Button>
                 </div>
               </div>
             </div>
 
             <div className='feedback'>
-              <h2>Reviews</h2>
+              <h2>Last Reviews</h2>
               {users[0].feedbacks.map((elem, i) => {
                 return (
                   <div key={i} className='cards-reviews'>
                     <li>{elem.username} user</li>
                     <li>Rating: {elem.rating}</li>
                     <li>
-                      <em>Reviews: {elem.message}</em>
+                      Reviews: <em>{elem.message}</em>
                     </li>
                   </div>
                 );
