@@ -1,12 +1,30 @@
+.filter {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: 'IBM Plex Serif', serif;
+  margin-top: 200px;
+}
+.cards {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .producer-card {
   display: flex;
-
+  justify-content: center;
   padding: 1.25em;
-  width: 400px;
+  width: 300px;
   border: 1px solid #f8f8f8;
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   font-size: 1.2em;
+  flex-direction: column;
+  align-items: center;
 }
 
 .producer-card figcaption {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Filter.scss';
 
 export default function Filter() {
   const [isSelected, setIsSelected] = useState('');

@@ -2,13 +2,20 @@ import React from 'react';
 
 export default function Producer(props) {
   const { producer } = props;
+
   return (
     <figure className='producer-card'>
-      <blockquote>{producer.name}</blockquote>
+      <p>Producer: {producer.name}</p>
+
       <p>
-        <cite>{producer.ratings}</cite>
+        <cite>
+          <strong>{producer.alcohol}</strong>
+        </cite>
       </p>
-      <figcaption>{producer.alcohol}</figcaption>
+
+      <p>Price: {producer.price}</p>
+
+      <p>Rating: {producer.ratings}</p>
     </figure>
   );
 }

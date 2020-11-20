@@ -36,17 +36,16 @@ export default function ConsumerPage(props) {
 
   return (
     <div>
-      <div>
+      <div className='filter'>
         <Filter />
       </div>
-      <div onClick={() => compareRatings()}>
-        <p>Loloooooo</p>
+      <div className='cards' onClick={() => compareRatings()}>
+        {producers.map((producer) => (
+          <div>
+            <Producer key={producer.id} producer={producer} />
+          </div>
+        ))}
       </div>
-      {producers.map((producer) => (
-        <div>
-          <Producer key={producer.id} producer={producer} />
-        </div>
-      ))}
     </div>
   );
 }
