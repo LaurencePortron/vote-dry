@@ -3,7 +3,7 @@ import './NavBar.css';
 
 import { NavLink } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
-
+import { AiOutlineLogout } from 'react-icons/ai';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBarConsumer = () => {
   const classes = useStyles();
-  const { currentLogin } = useContext(Login);
+  const { currentLogin, setCurrentLogin } = useContext(Login);
 
   return (
     <header>
@@ -33,10 +33,20 @@ const NavBarConsumer = () => {
             <Typography variant='h6' className={classes.title}>
               <NavLink to='/consumer'>Vote Wet</NavLink>
             </Typography>
-
             <Button>
-              <NavLink to=''>{`Logged as ${currentLogin.username}`}</NavLink>
+              <Typography
+                style={{ color: 'white' }}
+              >{`Logged as ${currentLogin.username}`}</Typography>
             </Button>
+
+            <Typography>
+              <NavLink to='/'>
+                <AiOutlineLogout
+                  style={{ fontSize: '20px' }}
+                  onClick={() => setCurrentLogin([])}
+                />
+              </NavLink>
+            </Typography>
           </Toolbar>
         </AppBar>
       </div>
