@@ -1,5 +1,6 @@
 import React from 'react';
 import './Producer.css';
+import NavBarConsumer from './NavBarConsumer';
 
 const Producer = () => {
   let users = [
@@ -67,58 +68,63 @@ const Producer = () => {
   ];
   console.log(users[0].orders);
   return (
-    <div className='producer-container'>
-      <h1>Welcome Back {users[0].username}</h1>
-      <div className='producer-infos'>
-        <h2>Your Pending Orders</h2>
-        {
-          <div className='producer-orders'>
-            {users[0].orders.map((e, i) => {
-              return (
-                <div key={i} className='infos-cards'>
-                  <li>Buyer: {e.buyer}</li>
-                  <li>Quantity: {e.quantity}</li>
-                  <li>Price per unit: {e.unitPrice}$</li>
-                  <li>Order Date: {e.date}</li>
-                </div>
-              );
-            })}
-          </div>
-        }
-      </div>
-      <div className='container-reviews'>
-        <div className='dispute-container'>
-          <h2>Disputes</h2>
-          <div className='main-disputes'>
-            <div className='disputes'>
-              <p>User: {users[0].litiges[0].buyer}</p>
-              <br />
-              <p className='text-disputes'>{users[0].litiges[0].status}</p>
-            </div>
-            <div className='disputes'>
-              <p>User: {users[0].litiges[1].buyer}</p>
-              <br />
-              <p className='text-disputes'>{users[0].litiges[1].status}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className='feedback'>
-          <h2>Reviews</h2>
-          {users[0].feedbacks.map((elem, i) => {
-            return (
-              <div key={i} className='cards-reviews'>
-                <li>{elem.username} user</li>
-                <li>Rating: {elem.rating}</li>
-                <li>
-                  <em>Reviews: {elem.message}</em>
-                </li>
+    <>
+      <NavBarConsumer />
+      <main>
+        <div className='producer-container'>
+          <h1>Welcome Back {users[0].username}</h1>
+          <div className='producer-infos'>
+            <h2>Your Pending Orders</h2>
+            {
+              <div className='producer-orders'>
+                {users[0].orders.map((e, i) => {
+                  return (
+                    <div key={i} className='infos-cards'>
+                      <li>Buyer: {e.buyer}</li>
+                      <li>Quantity: {e.quantity}</li>
+                      <li>Price per unit: {e.unitPrice}$</li>
+                      <li>Order Date: {e.date}</li>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            }
+          </div>
+          <div className='container-reviews'>
+            <div className='dispute-container'>
+              <h2>Disputes</h2>
+              <div className='main-disputes'>
+                <div className='disputes'>
+                  <p>User: {users[0].litiges[0].buyer}</p>
+                  <br />
+                  <p className='text-disputes'>{users[0].litiges[0].status}</p>
+                </div>
+                <div className='disputes'>
+                  <p>User: {users[0].litiges[1].buyer}</p>
+                  <br />
+                  <p className='text-disputes'>{users[0].litiges[1].status}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className='feedback'>
+              <h2>Reviews</h2>
+              {users[0].feedbacks.map((elem, i) => {
+                return (
+                  <div key={i} className='cards-reviews'>
+                    <li>{elem.username} user</li>
+                    <li>Rating: {elem.rating}</li>
+                    <li>
+                      <em>Reviews: {elem.message}</em>
+                    </li>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 export default Producer;
