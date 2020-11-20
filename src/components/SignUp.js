@@ -216,7 +216,7 @@ const SignUp = (props) => {
           </div>
         </form>
 
-        <Link to={`/`}>
+        <Link to={`/signin`}>
           <Button variant='contained'>Already have an account ? Sign-in</Button>
         </Link>
       </div>
