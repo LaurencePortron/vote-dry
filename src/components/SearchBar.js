@@ -7,6 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { ProducerContext } from '../context/ProducerContext';
 import _ from 'lodash';
+import './SearchBar.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     borderRadius: '30px',
     height: '40px',
-    width: '70%',
+    width: '100%',
   },
 }));
 
@@ -42,7 +43,7 @@ const SearchBar = () => {
   let uniqueAlcohol = _.uniqBy(alcoholArray);
 
   return (
-    <div>
+    <div className='searchbar'>
       <Autocomplete
         freeSolo
         id='free-solo-2-demo'
