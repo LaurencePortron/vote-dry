@@ -55,3 +55,15 @@ footer {
   left: 0;
   right: 0;
 }
+@media screen and (max-width: 700px) {
+  .order-confirmed h1 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .order-confirmed h2 {
+    text-align: center;
+  }
+  .order-confirmed {
+    margin-top: 25px;
+  }
+}
