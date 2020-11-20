@@ -1,3 +1,8 @@
+.send-button{
+  margin-right: 10px;
+}
+
+
 .producer-detail-container {
   .producer-detail {
     display: flex;
@@ -25,7 +30,7 @@
     }
   }
   footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -51,7 +56,7 @@ main {
   }
 }
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;

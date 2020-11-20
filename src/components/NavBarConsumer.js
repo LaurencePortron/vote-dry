@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './NavBarConsumer.scss';
-
-import { NavLink } from 'react-router-dom';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import { NavLink, Link } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,6 +42,9 @@ const NavBarConsumer = () => {
             >
               Booze Market
             </Typography>
+            <Link to='/basket'>
+              <ShoppingBasketIcon style={{ color: 'white' }}/>
+            </Link>
             <Button>
               <Typography
                 style={{ color: 'white', fontFamily: 'IBM Plex Serif, serif' }}
@@ -51,6 +54,7 @@ const NavBarConsumer = () => {
             <Typography>
               <NavLink to='/' style={{ color: 'white' }}>
                 <AiOutlineLogout
+                  
                   style={{ fontSize: '20px' }}
                   onClick={() => setCurrentLogin([])}
                 />

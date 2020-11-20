@@ -4,11 +4,13 @@ import ProducerCardTest from './ProducerCardTest';
 import Footer from '../components/Footer';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
+import { BasketContext } from '../context/BasketContext';
 import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
 
 export default function ConsumerPage() {
   const { producers, alcoholSearched } = useContext(ProducerContext);
+  const { basket, setBasket } = useContext(BasketContext);
 
   const displayProducers = () => {
     return alcoholSearched.length > 0
