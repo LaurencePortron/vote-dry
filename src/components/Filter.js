@@ -11,7 +11,9 @@ export default function Filter() {
       <div>
         {isSelected === 'City' ? (
           <div>
-            <label for='localisation'>What city are you looking for ?</label>
+            <label htmlFor='localisation'>
+              What city are you looking for ?
+            </label>
             <select
               value=''
               type='select'
@@ -44,7 +46,7 @@ export default function Filter() {
       <div>
         {isSelected === 'Alcohol' ? (
           <div>
-            <label for='alcohol'>What booze are you looking for ?</label>
+            <label htmlFor='alcohol'>What booze are you looking for ?</label>
             <select
               type='select'
               className='filteredBtn'
@@ -70,7 +72,7 @@ export default function Filter() {
     <div>
       {isSelected === '' ? (
         <div>
-          <label for='selection'>What are you looking for ?</label>
+          <label htmlFor='selection'>What are you looking for ?</label>
           <select
             type='select'
             className='selectionBtn'
