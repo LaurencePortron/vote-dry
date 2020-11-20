@@ -25,6 +25,7 @@ const SignIn = (props) => {
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [isLoginOk, setIsLoginOk] = useState(true);
 
   const { currentLogin, setCurrentLogin, setIsAuth } = useContext(Login);
 
@@ -50,9 +51,15 @@ const SignIn = (props) => {
             ? props.history.push('/producer')
             : props.history.push('/consumer')
         )
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          err == 'Error: Request failed with status code 403'
+            ? setIsLoginOk(false)
+            : setIsLoginOk(true);
+        });
     }
   };
+
+  console.log(isLoginOk);
 
   const validation = () => {
     if (!username) {
@@ -85,7 +92,9 @@ const SignIn = (props) => {
               variant='outlined'
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              required
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='password'>
@@ -97,11 +106,20 @@ const SignIn = (props) => {
               variant='outlined'
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              required
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
+          {!isLoginOk && (
+            <p className='wrong-login'>Wrong username or password</p>
+          )}
           <div>
-            <Button variant='contained' type='submit'>
+            <Button
+              variant='contained'
+              type='submit'
+              style={{ fontFamily: 'IBM Plex Serif, serif' }}
+            >
               Sign in
             </Button>
           </div>
@@ -109,8 +127,18 @@ const SignIn = (props) => {
 
         <p>New to Vote Dry ?</p>
         <Link to={`/signup`}>
-          <Button variant='contained'>Create your account</Button>
+          <Button
+            variant='contained'
+            style={{ fontFamily: 'IBM Plex Serif, serif' }}
+          >
+            Create your account
+          </Button>
         </Link>
+      </div>
+      <div className='pwd'>
+        <p>
+          D6E03F7D2EC0D47127316360A180608F4C6583AD05DD17B0FD05EC7EBF55DFEE821323D4DD69D467292B2CA3B801E00747D8163D69966817972DC909AD9A4B9B
+        </p>
       </div>
       <footer>
         <Footer />
