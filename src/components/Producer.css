@@ -7,12 +7,22 @@
   align-items: center;
   width: 100%;
   font-family: 'IBM Plex Serif', serif;
+  border-radius: 5px;
 }
+
+.producer-container h1 {
+  margin-top: 50px;
+  font-size: 50px;
+}
+
 .producer-container h2 {
   text-align: left;
-  background-color: #e74c3c;
+  background-color: #233559;
+  color: white;
   width: 100%;
   padding-left: 10px;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
 .producer-infos {
   width: 80%;
@@ -20,6 +30,7 @@
   text-align: center;
   background-color: #e5e7e9;
   border-radius: 5px;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .producer-orders {
   display: flex;
@@ -71,7 +82,13 @@
 .dispute-container {
   background-color: #e5e7e9;
   border-radius: 5px;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+.dispute-container h2 {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
 .main-disputes {
   display: flex;
   padding-bottom: 10px;
@@ -82,4 +99,9 @@
 .feedback {
   background-color: #e5e7e9;
   border-radius: 5px;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.feedback h2 {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
