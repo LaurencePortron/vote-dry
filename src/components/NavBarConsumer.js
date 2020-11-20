@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './NavBar.css';
 
 import { NavLink } from 'react-router-dom';
+import { Login } from '../context/LoginContext';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBarConsumer = () => {
   const classes = useStyles();
+  const { currentLogin } = useContext(Login);
 
   return (
     <header>
@@ -33,7 +35,7 @@ const NavBarConsumer = () => {
             </Typography>
 
             <Button>
-              <NavLink to='profil'>Profil</NavLink>
+              <NavLink to=''>{`Logged as ${currentLogin.username}`}</NavLink>
             </Button>
           </Toolbar>
         </AppBar>
