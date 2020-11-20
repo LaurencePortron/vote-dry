@@ -16,7 +16,7 @@ const Footer = () => {
         <img src={twitter} className='icon' />
       </div>
       <p className='footerCatchphrase'>
-        Made With Love by <strong>- Les Petits Pedestres -</strong>2020
+        Made With Love by <strong>- Les Petits Pedestres -</strong> 2020
       </p>
     </div>
   );

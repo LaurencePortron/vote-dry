@@ -60,9 +60,14 @@ const SearchBar = () => {
               ...params.InputProps,
               type: 'search',
               className: classes.input,
+              placeholder: 'Search for alcohol...',
               endAdornment: (
                 <SearchIcon
-                  style={{ color: 'black', cursor: 'pointer' }}
+                  style={{
+                    color: 'black',
+                    cursor: 'pointer',
+                    fontSize: '30px',
+                  }}
                   onClick={searchForAlcohol}
                 />
               ),

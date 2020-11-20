@@ -23,6 +23,16 @@ const useTextFieldStyles = makeStyles((theme) => ({
   },
 }));
 
+const useRadioStyles = makeStyles({
+  root: {
+    color: '#233559',
+    '&$checked': {
+      color: '#233559',
+    },
+  },
+  checked: {},
+});
+
 const SignUp = (props) => {
   const [secretCode, setSecretCode] = useState('');
   const [username, setUsername] = useState('');
@@ -119,7 +129,6 @@ const SignUp = (props) => {
     <>
       <div className='signup-wrapper'>
         <h1>Sign up</h1>
-        {isSecretCodeUnvalid && <p>Wrong secret code</p>}
         <p>All fields are required</p>
         <form
           className={useTextFieldStyles().root}
@@ -135,6 +144,9 @@ const SignUp = (props) => {
               placeholder='Enter the secret code'
               variant='outlined'
               onChange={(event) => setSecretCode(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='username'>
@@ -145,6 +157,9 @@ const SignUp = (props) => {
               placeholder='Enter your username'
               variant='outlined'
               onChange={(event) => setUsername(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='password'>
@@ -156,6 +171,9 @@ const SignUp = (props) => {
               placeholder='Enter your password'
               variant='outlined'
               onChange={(event) => setPassword(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='confirm-password'>
@@ -167,6 +185,9 @@ const SignUp = (props) => {
               placeholder='Confirm your password'
               variant='outlined'
               onChange={(event) => setConfirmedPassword(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='email'>
@@ -178,6 +199,9 @@ const SignUp = (props) => {
               placeholder='Enter your email'
               variant='outlined'
               onChange={(event) => setEmail(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
           <div className='city'>
@@ -189,35 +213,52 @@ const SignUp = (props) => {
               placeholder='Enter your city'
               variant='outlined'
               onChange={(event) => setCity(event.target.value)}
+              InputLabelProps={{
+                style: { fontFamily: 'IBM Plex Serif, serif' },
+              }}
             />
           </div>
 
           <FormControl component='fieldset'>
-            <FormLabel component='legend'>I'm a</FormLabel>
+            <FormLabel component='legend'style={{ fontFamily: 'IBM Plex Serif, serif' }}>I'm a</FormLabel>
             <RadioGroup aria-label='isProducer' name='isProducer'>
               <FormControlLabel
                 value='producer'
-                control={<Radio />}
-                label='Producer'
+                control={<Radio classes={useRadioStyles()}/>}
+                label={<span style={{ fontFamily: 'IBM Plex Serif, serif' }}>Producer</span>}
                 onChange={(event) => setIsProductor(true)}
+              
               />
               <FormControlLabel
                 value='customer'
-                control={<Radio />}
-                label='Customer'
+                control={<Radio classes={useRadioStyles()}/> }
+                label={<span style={{ fontFamily: 'IBM Plex Serif, serif' }}>Customer</span>}
                 onChange={(event) => setIsProductor(false)}
+                
               />
             </RadioGroup>
           </FormControl>
+          {isSecretCodeUnvalid && (
+            <p className='wrong-secret-code'>Wrong secret code</p>
+          )}
           <div className='signup-button'>
-            <Button variant='contained' onClick={handleSubmit}>
+            <Button
+              variant='contained'
+              onClick={handleSubmit}
+              style={{ fontFamily: 'IBM Plex Serif, serif' }}
+            >
               Sign up
             </Button>
           </div>
         </form>
 
         <Link to={`/signin`}>
-          <Button variant='contained'>Already have an account ? Sign-in</Button>
+          <Button
+            variant='contained'
+            style={{ fontFamily: 'IBM Plex Serif, serif' }}
+          >
+            Already have an account ? Sign-in
+          </Button>
         </Link>
       </div>
       <Footer />
