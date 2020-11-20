@@ -26,7 +26,7 @@ const SignIn = (props) => {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const { currentLogin, setCurrentLogin } = useContext(Login);
+  const { currentLogin, setCurrentLogin, setIsAuth } = useContext(Login);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,7 +44,7 @@ const SignIn = (props) => {
 
       axios
         .post('http://192.168.68.111:5000/login', datas)
-        .then((res) => setCurrentLogin(res.data))
+        .then((res) => setCurrentLogin(res.data), setIsAuth(true))
         .then(() =>
           currentLogin.isProducer
             ? props.history.push('/producer')
