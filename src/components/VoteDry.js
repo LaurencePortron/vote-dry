@@ -31,7 +31,7 @@ const VoteDry = () => {
         <nav className='navigationBar'>
           <ul className='navigation'>
             <img src={church} className='logoNav' alt='church' />
-            <h1 className='wetDry'> WET DRY</h1>
+            <h1 className='wetDry'>VOTE DRY</h1>
             <li className='firstLi'>
               <a onClick={scrollDownToNavWho} href='#about' className='link'>
                 Who ?
