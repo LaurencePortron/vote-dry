@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import moment from 'moment';
 import Footer from '../components/Footer';
+import NavBarConsumer from '../components/NavBarConsumer';
 import { ProducerContext } from '../context/ProducerContext';
 import '../styles/ProducerDetail.scss';
 
@@ -9,9 +10,14 @@ const OrderConfirmed = (props) => {
 
   const producerId = parseInt(props.match.params.producer);
 
+  // setTimeout(() => {
+  //   props.history.push('/consumer');
+  // }, 5000);
+
   return (
     producers.length !== 0 && (
       <>
+        <NavBarConsumer />
         <div className='order-confirmed'>
           <h1>Thanks guy for your order !</h1>
           <h2>

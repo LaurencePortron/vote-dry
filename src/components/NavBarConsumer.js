@@ -30,17 +30,16 @@ const NavBarConsumer = () => {
       <div className={classes.root}>
         <AppBar className={classes.root} position='static'>
           <Toolbar>
-            <Typography variant='h6' className={classes.title}>
-              <NavLink
-                to='/consumer'
-                style={{
-                  color: 'white',
-                  textDecoration: 'none',
-                  fontSize: '26px',
-                }}
-              >
-                Booze Market
-              </NavLink>
+            <Typography
+              variant='h6'
+              className={classes.title}
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                fontSize: '26px',
+              }}
+            >
+              Booze Market
             </Typography>
             <Button>
               <Typography
