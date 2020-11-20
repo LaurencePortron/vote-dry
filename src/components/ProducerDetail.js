@@ -45,7 +45,7 @@ const ProducerDetail = (props) => {
         <NavBarConsumer />
         <div
           onClick={() => history.goBack()}
-          style={{ cursor: 'pointer', marginTop: '20px', marginLeft: '20px' }}
+          style={{ cursor: 'pointer', marginTop: '20px', marginLeft: '30px' }}
         >
           Go back
         </div>
