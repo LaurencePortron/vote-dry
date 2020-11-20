@@ -122,7 +122,7 @@ const VoteDry = () => {
         </div>
       </div>
       <div>
-        <div className='footer'>
+        <div className='footerFirstPage'>
           <nav>
             <ul>
               <img src={jesus} className='logoFooter' alt='jesus' />
