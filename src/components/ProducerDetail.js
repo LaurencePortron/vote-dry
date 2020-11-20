@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
 import Footer from '../components/Footer';
@@ -8,11 +8,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../styles/ProducerDetail.scss';
 import NavBarConsumer from './NavBarConsumer';
+import { BasketContext } from '../context/BasketContext';
 
 const ProducerDetail = (props) => {
   const [producerDetail, setProducerDetail] = useState([]);
   const [quantity, setQuantity] = useState(0);
   const producerId = props.match.params.producer;
+  const { basket, setBasket } = useContext(BasketContext);
 
   useEffect(() => {
     axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
@@ -33,7 +35,18 @@ const ProducerDetail = (props) => {
       .catch((err) => console.log(err));
   };
 
-  console.log(producerDetail);
+  const addToBasket = () => {
+    let currentBasket = {
+      producer: producerDetail[0].name,
+      product: producerDetail[0].alcohol,
+      quantity,
+    };
+    setBasket((prevState) => {
+      return [...prevState, currentBasket];
+    });
+  };
+
+  console.log(basket);
 
   return (
     producerDetail.length !== 0 && (
@@ -80,23 +93,43 @@ const ProducerDetail = (props) => {
             <p>Total : {quantity * producerDetail[0].price}$</p>
             <div className='button'>
               {quantity === 0 ? (
-                <Button
-                  disabled
-                  variant='contained'
-                  type='button'
-                  onClick={handleClick}
-                >
-                  Send my order
-                </Button>
+                <>
+                  <Button
+                    disabled
+                    variant='contained'
+                    type='button'
+                    onClick={handleClick}
+                  >
+                    Send my order
+                  </Button>
+                  <Button
+                    disabled
+                    variant='contained'
+                    type='button'
+                    onClick={addToBasket}
+                  >
+                    Add to basket
+                  </Button>
+                </>
               ) : (
-                <Button
-                  variant='contained'
-                  type='button'
-                  onClick={handleClick}
-                  style={{ fontFamily: 'IBM Plex Serif, serif' }}
-                >
-                  Send my order
-                </Button>
+                <>
+                  <Button
+                    variant='contained'
+                    type='button'
+                    onClick={handleClick}
+                    style={{ fontFamily: 'IBM Plex Serif, serif' }}
+                  >
+                    Send my order
+                  </Button>
+                  <Button
+                    variant='contained'
+                    type='button'
+                    onClick={addToBasket}
+                    style={{ fontFamily: 'IBM Plex Serif, serif' }}
+                  >
+                    Add to basket
+                  </Button>
+                </>
               )}
             </div>
           </section>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './NavBarConsumer.scss';
-
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { NavLink } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
 import { AiOutlineLogout } from 'react-icons/ai';
@@ -42,12 +42,13 @@ const NavBarConsumer = () => {
             >
               Booze Market
             </Typography>
+            <ShoppingBasketIcon/>
             <Button>
               <Typography
                 style={{ color: 'white', fontFamily: 'IBM Plex Serif, serif' }}
               >{`Logged as ${currentLogin.username}`}</Typography>
             </Button>
-
+           
             <Typography>
               <NavLink to='/' style={{ color: 'white' }}>
                 <AiOutlineLogout

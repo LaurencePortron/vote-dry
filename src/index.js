@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ProducerContextProvider from './context/ProducerContext';
 import LoginContextProvider from './context/LoginContext';
+import BasketContextProvider from './context/BasketContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <LoginContextProvider>
       <ProducerContextProvider>
-        <App />
-      </ProducerContextProvider>
+        <BasketContextProvider>
+          <App />
+        </BasketContextProvider>
+        </ProducerContextProvider>
     </LoginContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
