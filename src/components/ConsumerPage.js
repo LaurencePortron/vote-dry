@@ -1,12 +1,21 @@
 import React, { useContext } from 'react';
 import ProducerCardTest from './ProducerCardTest';
 import Filter from './Filter';
+import Footer from '../components/Footer';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
 import NavBarConsumer from './NavBarConsumer';
 import './ConsumerPage.css';
 
 export default function ConsumerPage(props) {
+  // // const [producers, setProducers] = useState([]);
+  // // const [bestRatings, setBestRatings] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get(`http://192.168.68.111:5000/producerList`).then((response) => {
+  //     setProducers(response.data);
+  //   });
+  // }, []);
   const { producers, alcoholSearched } = useContext(ProducerContext);
 
   const displayProducers = () => {
@@ -27,6 +36,7 @@ export default function ConsumerPage(props) {
       </div>
 
       <div className='container-map'>{displayProducers()}</div>
+      <Footer />
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import React, { useRef } from 'react';
 import './VoteDry.scss';
-import './NavBar.css';
+import './NavBar.scss';
 import church from '../images/church.png';
-/* import voteDry1 from '../images/voteDry1.jpeg'; */
 import voteDry2 from '../images/voteDry2.jpg';
 import voteDry3 from '../images/voteDry3.jpg';
-/* import voteDry4 from '../images/voteDry4.jpg'; */
 import voteDry5 from '../images/voteDry5.jpg';
 import { Link } from 'react-router-dom';
+import jesus from '../images/jesus.png';
 
 const VoteDry = () => {
   const whoRef = useRef();
@@ -34,17 +33,17 @@ const VoteDry = () => {
             <img src={church} className='logoNav' alt='church' />
             <li className='firstLi'>
               <a onClick={scrollDownToNavWho} href='#about' className='link'>
-                Who we are
+                Who We Are
               </a>
             </li>
             <li>
               <a onClick={scrollDownToNavWhat} href='#about' className='link'>
-                What we do
+                What We Do
               </a>
             </li>
             <li>
               <a onClick={scrollDownToNavWhy} href='#contact' className='link'>
-                Why we do it
+                Why We Do It
               </a>
             </li>
           </ul>
@@ -120,6 +119,21 @@ const VoteDry = () => {
               Sacrified to the Financial Greed of the liquor trafic ?
             </p>
           </div>
+        </div>
+      </div>
+      <div>
+        <div className='footer'>
+          <nav>
+            <ul>
+              <img src={jesus} className='logoFooter' alt='jesus' />
+              <li className='footer-quote'>
+                "With men this is impossible, but with God all things are
+                possible." 
+                <br />
+                <strong>Matthew 19:26</strong>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

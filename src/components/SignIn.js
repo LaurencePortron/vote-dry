@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Login } from '../context/LoginContext';
 import axios from 'axios';
+import Footer from '../components/Footer';
 import '../styles/Login.scss';
 
 const useTextFieldStyles = makeStyles((theme) => ({
@@ -14,7 +15,7 @@ const useTextFieldStyles = makeStyles((theme) => ({
       width: 200,
       display: 'flex',
       flexDirection: 'column',
-      fontFamily: 'IBM Plex Serif, serif'
+      fontFamily: 'IBM Plex Serif, serif',
     },
   },
 }));
@@ -67,48 +68,53 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className='signin-wrapper'>
-      <h1>Sign in</h1>
-      <form
-        className={useTextFieldStyles().root}
-        noValidate
-        autoComplete='off'
-        onSubmit={handleSubmit}
-      >
-        <div className='username'>
-          <TextField
-            error={usernameError ? true : false}
-            label='Username'
-            placeholder={usernameError}
-            variant='outlined'
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-          />
-        </div>
-        <div className='password'>
-          <TextField
-            error={passwordError ? true : false}
-            type='password'
-            label='Password'
-            placeholder={passwordError}
-            variant='outlined'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <Button variant='contained' type='submit'>
-            Sign in
-          </Button>
-        </div>
-      </form>
+    <div className='signin-wrapper-container'>
+      <div className='signin-wrapper'>
+        <h1>Sign in</h1>
+        <form
+          className={useTextFieldStyles().root}
+          noValidate
+          autoComplete='off'
+          onSubmit={handleSubmit}
+        >
+          <div className='username'>
+            <TextField
+              error={usernameError ? true : false}
+              label='Username'
+              placeholder={usernameError}
+              variant='outlined'
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              required
+            />
+          </div>
+          <div className='password'>
+            <TextField
+              error={passwordError ? true : false}
+              type='password'
+              label='Password'
+              placeholder={passwordError}
+              variant='outlined'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <Button variant='contained' type='submit'>
+              Sign in
+            </Button>
+          </div>
+        </form>
 
-      <p>New to Vote Dry ?</p>
-      <Link to={`/signup`}>
-        <Button variant='contained'>Create your account</Button>
-      </Link>
+        <p>New to Vote Dry ?</p>
+        <Link to={`/signup`}>
+          <Button variant='contained'>Create your account</Button>
+        </Link>
+      </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
