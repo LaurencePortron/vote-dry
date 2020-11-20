@@ -25,22 +25,16 @@ function App() {
     <Router>
       <Switch>
         <Route exact path='/' component={VoteDry} />
-
         <Route path='/signin' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route
           exact
           path='/consumer'
-          render={() => (isAuth ? <ConsumerPage /> : <Redirect to='/signin' />)}
-        />
-
-        <Route
-          exact
-          path='/consumer/:producer'
-          render={() =>
-            isAuth ? <ProducerDetail /> : <Redirect to='/signin' />
+          render={(props) =>
+            isAuth ? <ConsumerPage /> : <Redirect to='/signin' />
           }
         />
+        <Route exact path='/consumer/:producer' component={ProducerDetail} />
         <Route
           exact
           path='/consumer/orderconfirmed/:producer'
