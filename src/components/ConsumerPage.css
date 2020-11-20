@@ -1,4 +1,4 @@
-.producer-card {
+/* .producer-card {
   display: flex;
 
   padding: 1.25em;
@@ -7,19 +7,22 @@
   border-radius: 2px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   font-size: 1.2em;
-}
-
-.producer-card figcaption {
-  width: 100%;
-}
-
-.producer-card blockquote {
-  margin: 0 0 1rem 0;
-}
-
-.producer-card figcaption p {
-  margin: 0.125rem 0 0 0;
+} */
+.container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  border: solid;
+  width: 400px;
+  height: auto;
+  margin: 100px 30px 30px 30px;
+}
+.container-map {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.producer-card {
+  text-align: center;
+}
+.searchbar-container {
+  margin-top: 100px;
 }

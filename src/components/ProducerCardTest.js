@@ -1,10 +1,12 @@
 import React from 'react';
 import './ConsumerPage.css';
-export default function ProducerCard(props) {
+
+const ProducerCardTest = (props) => {
   const { producer } = props;
   return (
-    <div className='producer-card-container'>
+    <div className='container'>
       <div className='producer-card'>
+        <img src={producer.image} style={{ width: '90px', height: '90px' }} />
         <p>{producer.name}</p>
 
         <p>{producer.ratings}</p>
@@ -13,4 +15,6 @@ export default function ProducerCard(props) {
       </div>
     </div>
   );
-}
+};
+
+export default ProducerCardTest;
