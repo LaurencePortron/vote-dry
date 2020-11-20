@@ -21,6 +21,7 @@
   width: 100%;
   padding-left: 10px;
   border-radius: 5px 5px 0 0;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
 .producer-infos {
   width: 80%;
@@ -28,7 +29,7 @@
   text-align: center;
   background-color: #e5e7e9;
   border-radius: 5px;
-  /* box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .producer-orders {
   display: flex;
@@ -80,7 +81,13 @@
 .dispute-container {
   background-color: #e5e7e9;
   border-radius: 5px;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+.dispute-container h2 {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
 .main-disputes {
   display: flex;
   padding-bottom: 10px;
@@ -91,4 +98,9 @@
 .feedback {
   background-color: #e5e7e9;
   border-radius: 5px;
+  box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.feedback h2 {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.75);
 }

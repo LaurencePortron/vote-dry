@@ -31,7 +31,9 @@ const NavBarConsumer = () => {
         <AppBar className={classes.root} position='static'>
           <Toolbar>
             <Typography variant='h6' className={classes.title}>
-              <NavLink to='/consumer'>Vote Wet</NavLink>
+              <NavLink to='/consumer' style={{ color: 'white' }}>
+                Vote Wet
+              </NavLink>
             </Typography>
             <Button>
               <Typography
