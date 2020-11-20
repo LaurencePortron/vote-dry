@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '30px',
     height: '40px',
     width: '100%',
+    fontFamily: 'IBM Plex Serif, serif'
   },
 }));
 
