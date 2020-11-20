@@ -33,9 +33,13 @@ const NavBarConsumer = () => {
             <Typography variant='h6' className={classes.title}>
               <NavLink
                 to='/consumer'
-                style={{ color: 'white', textDecoration: 'none' }}
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  fontSize: '26px',
+                }}
               >
-                Vote Wet
+                Booze Market
               </NavLink>
             </Typography>
             <Button>
