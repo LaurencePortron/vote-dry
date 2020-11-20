@@ -28,7 +28,6 @@ function App() {
           </ProducerContextProvider>
         </LoginContextProvider>
       </Switch>
-      <Footer />
     </Router>
   );
 }
