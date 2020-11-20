@@ -40,6 +40,10 @@ const ProducerDetail = (props) => {
       producer: producerDetail[0].name,
       product: producerDetail[0].alcohol,
       quantity,
+      price: producerDetail[0].price,
+      id: parseInt(producerId),
+      stock: producerDetail[0].stock,
+      message: producerDetail[0].meetMessage,
     };
     setBasket((prevState) => {
       return [...prevState, currentBasket];

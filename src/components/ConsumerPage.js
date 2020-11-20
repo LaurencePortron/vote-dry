@@ -12,8 +12,6 @@ export default function ConsumerPage(props) {
   const { producers, alcoholSearched } = useContext(ProducerContext);
   const { basket, setBasket } = useContext(BasketContext);
 
-  console.log(basket);
-
   const displayProducers = () => {
     return alcoholSearched.length > 0
       ? alcoholSearched.map((producer) => {
