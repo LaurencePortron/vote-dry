@@ -1,29 +1,8 @@
 .footer {
-  background-color: #03245c;
-  position: static;
-
+  position: relative;
   left: 0;
   bottom: 0;
-  color: white;
+  height: 80px;
+  background-color: #233559;
   text-align: center;
-  padding: 10px 0 10px;
-  width: 100vw;
-}
-.footer-quote {
-  text-decoration: none;
-  list-style: none;
-  font-family: 'IBM Plex Serif', serif;
-  font-size: 10px;
-  margin-left: 25px;
-  line-height: 22px;
-}
-
-.logoFooter {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  position: absolute;
-  border-radius: 20px;
-  padding: 1px;
-  left: 5%;
 }

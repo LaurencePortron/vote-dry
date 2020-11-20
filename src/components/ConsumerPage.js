@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './ConsumerPage.css';
-import Producer from './Producer';
+import ProducerCard from './ProducerCard';
 import Filter from './Filter';
 import SearchBar from './SearchBar';
 import { ProducerContext } from '../context/ProducerContext';
@@ -12,10 +12,10 @@ export default function ConsumerPage(props) {
   const displayProducers = () => {
     return alcoholSearched.length > 0
       ? alcoholSearched.map((producer) => {
-          return <Producer key={producer.id} producer={producer} />;
+          return <ProducerCard key={producer.id} producer={producer} />;
         })
       : producers.map((producer) => {
-          return <Producer key={producer.id} producer={producer} />;
+          return <ProducerCard key={producer.id} producer={producer} />;
         });
   };
 
